@@ -13,7 +13,8 @@ class Chart extends React.Component {
     static defaultProps = {
         displayTitle: true,
         displayLegend: true,
-        legendPosition: 'right'
+        legendPosition: 'right',
+        titleText: ''
     }
 
     render() {
@@ -25,7 +26,7 @@ class Chart extends React.Component {
                         maintainAspectRatio: true,
                         title: {
                             display: this.props.displayTitle,
-                            text: 'Gryffindor',
+                            text: this.props.titleText,
                             fontSize: 25
                         },
                         legend: {
