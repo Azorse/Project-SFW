@@ -77,7 +77,7 @@ class Home extends Component {
     event.preventDefault();
     console.log("submit works")
     if (this.state.username && this.state.email && this.state.house) {
-
+      //Put code here
     }
   };
 
