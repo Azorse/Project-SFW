@@ -31,3 +31,12 @@
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 1rem 1rem;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0,0,0,0.125);
+}
