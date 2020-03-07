@@ -28,6 +28,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
+import Register from "./pages/Register"
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Standings from "./pages/Standings"
@@ -42,6 +43,7 @@ function App() {
           {/* <Route exact path="/books" component={Books} />
           <Route exact path="/books/:id" component={Detail} /> */}
           <Route path="/standings" component={Standings}/>
+          <Route exact path="/register" component={Register} />
           <Route component={NoMatch} />
         </Switch>
       </div>
