@@ -30,6 +30,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Standings from "./pages/Standings"
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/" component={Home} />
           {/* <Route exact path="/books" component={Books} />
           <Route exact path="/books/:id" component={Detail} /> */}
+          <Route path="/standings" component={Standings}/>
           <Route component={NoMatch} />
         </Switch>
       </div>
