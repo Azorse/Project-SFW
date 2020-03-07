@@ -5,9 +5,6 @@ class Chart extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {
-            chartData: this.props.chartData
-        }
     }
 
     static defaultProps = {
@@ -21,7 +18,8 @@ class Chart extends React.Component {
         return (
             <div className="chart">
                 <Bar
-                    data={this.state.chartData}
+                    key= {this.props.data.name}
+                    data={this.props.data}
                     options={{ 
                         maintainAspectRatio: true,
                         title: {
