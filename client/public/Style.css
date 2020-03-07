@@ -1,0 +1,12 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(./Media-Files/Fonts/MagicSchoolOne-ovYz.ttf);
+}
+
+h1 {
+  color: gold;
+  font-family: myFirstFont;
+}
+body {
+  background-image: url(./Media-Files/32966.jpg);
+}
