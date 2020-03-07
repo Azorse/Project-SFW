@@ -37,11 +37,8 @@
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-<<<<<<< HEAD
-    "reactstrap": "^8.4.1"
-=======
+    "reactstrap": "^8.4.1",
     "react-chartjs-2": "^2.9.0"
->>>>>>> 3789abbe7381e59753b630f76ff957f57dc01527
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
