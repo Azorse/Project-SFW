@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default {
+const API = {
   // Gets all books
   // getBooks: function() {
   //   return axios.get("/api/books");
@@ -15,7 +15,9 @@ export default {
   },
   // Saves a book to the database
   saveUser: function(userData) {
-    return axios.post("/api/books", userData);
+    return axios.post("/api/users", userData);
   },
 
 };
+
+export default API;

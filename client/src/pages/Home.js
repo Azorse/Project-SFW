@@ -92,7 +92,7 @@ class Home extends Component {
             <Jumbotron>
               <h1>Books On My List</h1>
             </Jumbotron>
-            {/* {this.state.books.length ? (
+            {this.state.books.length ? (
               <List>
                 {this.state.books.map(book => (
                   <ListItem key={book._id}>
@@ -107,7 +107,7 @@ class Home extends Component {
               </List>
             ) : (
               <h3>No Results to Display</h3>
-            )} */}
+            )}
           </Col>
         </Row>
       </Container>

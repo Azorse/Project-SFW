@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+import API from "../utils/API.js";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 
-class Home extends Component {
+class Register extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -54,18 +55,11 @@ class Home extends Component {
         lastName: this.state.lastName,
         email: this.state.email,
         password: this.state.password
-      }).then(res => {
-        console.log(res);
-        if (!res.data.errmsg) {
-          console.log("all good");
-          this.setState({
-            redirectTo: "/home"
-          });
-        } else {
-          console.log("duplicate email");
-        }
-      });
+      })
+      .then(res => res.redirect("/"))
+      .catch(err => console.log(err));
     }
+
   };
 
   render() {
@@ -119,4 +113,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Register;
