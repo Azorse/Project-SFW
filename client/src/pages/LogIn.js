@@ -11,7 +11,6 @@ import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
 
-<<<<<<< HEAD
 class LogIn extends Component {
   state = {
     images: [
@@ -19,15 +18,6 @@ class LogIn extends Component {
       {name: Hufflepuff, value: "Hufflepuff"},
       {name: Ravenclaw, value: "Ravenclaw"},
       {name: Slytherin, value: "Slytherin"}
-=======
-class Login extends Component {
-  state = {
-    images: [
-      { name: Gryffindor, value: "gryffindor" },
-      { name: Hufflepuff, value: "hufflepuff" },
-      { name: Ravenclaw, value: "ravenclaw" },
-      { name: Slytherin, value: "slytherin" }
->>>>>>> 15ad2563a2d42ead6354e0a0d45c7b30e26540b4
     ],
     username: "",
     email: "",
@@ -144,8 +134,4 @@ class Login extends Component {
   }
 }
 
-<<<<<<< HEAD
 export default LogIn;
-=======
-export default Login;
->>>>>>> 15ad2563a2d42ead6354e0a0d45c7b30e26540b4
