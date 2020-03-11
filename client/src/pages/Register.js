@@ -1,38 +1,23 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+import { Redirect } from 'react-router';
+import API from "../utils/API.js";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 
-class Home extends Component {
+class Register extends Component {
   state = {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    redirect: false
   };
-
-  // componentDidMount() {
-  //   this.loadBooks();
-  // }
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -54,21 +39,17 @@ class Home extends Component {
         lastName: this.state.lastName,
         email: this.state.email,
         password: this.state.password
-      }).then(res => {
-        console.log(res);
-        if (!res.data.errmsg) {
-          console.log("all good");
-          this.setState({
-            redirectTo: "/home"
-          });
-        } else {
-          console.log("duplicate email");
-        }
-      });
+      })
+      .then(()=> this.setState({redirect: true}))
+      .catch(err => console.log(err));
     }
   };
 
   render() {
+    const {redirect} = this.state;
+
+    if(redirect) { return <Redirect to='/'/> }
+
     return (
       <Container fluid>
         <Row>
@@ -77,7 +58,7 @@ class Home extends Component {
             <Jumbotron>
               <h1>Register</h1>
             </Jumbotron>
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               <Input
                 value={this.state.firstName}
                 onChange={this.handleInputChange}
@@ -105,8 +86,8 @@ class Home extends Component {
                 placeholder="Password"
               />
               <FormBtn
+                type="submit"
                 disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
-                onClick={this.handleFormSubmit}
               >
                 Sign Up
               </FormBtn>
@@ -119,4 +100,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Register;

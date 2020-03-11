@@ -1,25 +1,24 @@
 const db = require("../models");
+const bcrypt = require("bcryptjs")
 
 // Defining methods for the booksController
 module.exports = {
-  // findAll: function(req, res) {
-  //   db.Book
-  //     .find(req.query)
-  //     .sort({ date: -1 })
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
   findById: function(req, res) {
-    db.Book
+    db.User
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  },
+  },  
   create: function(req, res) {
+    console.log(req.body.pass)
+    const {firstName, lastName, email, password} = req.body
+    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+    const newUser = new User({firstName, lastName, email, password: hashedPassword})
+
     db.User
-      .create(req.body)
+      .save()
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => {res.status(422).json({message: "That email is already taken"})});
   },
   update: function(req, res) {
     db.User
