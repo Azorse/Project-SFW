@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 import Home from "./pages/Home";
 import Register from "./pages/Register"
+// import Standings from "./pages/Standings"
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import Standings from "./pages/Standings"
