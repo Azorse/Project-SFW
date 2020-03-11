@@ -1,100 +1,53 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
-import { Col, Row, Container } from "../components/Grid";
-import Chart from "../components/Chart";
+import ReactDOM from "react-dom";
+import { Line, Bar } from "react-chartjs-2";
+import axios from "axios";
 
-class Standings extends Component {
-
-  constructor(){
-    super();
+class Chart extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-        chartData: {
-          labels: ['Boston', 'Worcester', 'Springfield'],
-          datasets: [
-            {
-                label: 'Population',
-                data: [0, 0, 0],
-                backgroundColor:[
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)'
-                ]
-            },
-                        {
-                label: 'Population',
-                data: [0, 0, 0],
-                backgroundColor:[
-                    'rgba(255, 99, 132, 0.6)',
-                    'rgba(54, 162, 235, 0.6)',
-                    'rgba(255, 206, 86, 0.6)'
-                ]
-            },
-          ]
-        }
-    }
+      chartData: [],
+      data: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=2&page=1&sparkline=true"
+      )
+      .then(res => {
+        const x = res.data;
+        let chartData = [];
+        x.forEach(element => {
+          chartData.push({
+            labels: ["Griffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+            datasets: [{ data: element.sparkline_in_7d.price,
+                        backgroundColor: ["rgba(139, 23, 23, 0.5)",
+                                          "rgba(32, 103, 29, 0.5)",
+                                          "rgba(11, 37, 141, 0.5)",
+                                          "rgba(202, 183, 6, 0.5)"],
+                        label:["Griffindor"]
+                                        }]
+          });
+        });
+        this.setState({ chartData });
+      });
+     }
+
+  render() {
+    return (
+      <div className="chart">
+        {this.state.chartData.map((n, index) => {
+          return <Bar key={index} data={n} />;
+        })}
+      </div>
+    );
+  }
 }
 
-    componentDidMount(){
-      this.getChartData();
-    }
+export default Chart;
 
-    updateChart = () => {
-      // for (var i = 0; i < this.state.chartData.datasets[0].data.length; i++){
-      //   console.log("Clicked!")
-      //   this.state.chartData.datasets[0].data[i] += 20;
-      //   // this.state.
-      // }
-      
-
-    }
- 
-    getChartData(){
-
-      //AJAX CALL FOR DATA FROM OUR API GOES HERE
-
-      const randNum = this.state.chartData.datasets[0].data.map((num) => Math.floor(Math.random() * 200))
-      const gryff = [10, 5, 4]
-      const slyth = [3, 3, 2]
-      const huff = [100, 29, 34]
-      const rave = [24, 50, 33]
-      
-      if (this.props.titleText == "Gryffindor"){
-        this.setState({chartData: {                
-            labels: ['Boston', 'Worcester', 'Springfield'],
-            datasets: [
-              {
-                  label: 'Population',
-                  data: gryff,
-                  backgroundColor:[
-                      'rgba(255, 99, 132, 0.6)',
-                      'rgba(54, 162, 235, 0.6)',
-                      'rgba(255, 206, 86, 0.6)'
-                  ]
-              }
-            ]
-          } 
-        })
-      }
-    }
-
-    render() {
-        return (
-            <Container fluid>
-            <Row>
-              <Col size="md-12">
-                <Jumbotron>
-                  <h1>TEST</h1>
-                </Jumbotron>
-                <Chart chartData={() => this.state.chartData} legendPosition="bottom" titleText="Gryffindor"/>
-                <Chart chartData={() => this.state.chartData} legendPosition="bottom" titleText="Slytherin"/>
-                <Chart chartData={() => this.state.chartData} legendPosition="bottom" titleText="Hufflepuff"/>
-                <Chart chartData={() => this.state.chartData} legendPosition="bottom" titleText="Ravenclaw"/>
-                <button onClick={this.updateChart}>update</button>
-              </Col>
-            </Row>
-          </Container>
-        )
-    }
-}
-
-export default Standings;
+const rootElement = document.getElementById("root");
+ReactDOM.render(<Chart />, rootElement);

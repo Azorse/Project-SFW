@@ -1,5 +1,5 @@
 {
-  "name": "Project-SFW",
+  "name": "project-sfw",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,7 +10,8 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed": "node scripts/testseed.js"
   },
   "repository": {
     "type": "git",
@@ -37,11 +38,7 @@
     "passport": "^0.4.1",
     "passport-google-oauth": "^2.0.0",
     "passport-google-oauth20": "^2.0.0",
-    "passport-local": "^1.0.0",
-    "react": "^16.13.0",
-    "react-chartjs-2": "^2.9.0",
-    "react-dom": "^16.13.0",
-    "reactstrap": "^8.4.1"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
