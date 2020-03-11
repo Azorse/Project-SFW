@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
 import Jumbotron from "../components/Jumbotron";
+import { Redirect } from 'react-router';
 import API from "../utils/API.js";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -14,26 +15,9 @@ class Register extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    password: ""
+    password: "",
+    redirect: false
   };
-
-  // componentDidMount() {
-  //   this.loadBooks();
-  // }
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -56,13 +40,16 @@ class Register extends Component {
         email: this.state.email,
         password: this.state.password
       })
-      .then(res => res.redirect("/"))
+      .then(()=> this.setState({redirect: true}))
       .catch(err => console.log(err));
     }
-
   };
 
   render() {
+    const {redirect} = this.state;
+
+    if(redirect) { return <Redirect to='/'/> }
+
     return (
       <Container fluid>
         <Row>
@@ -71,7 +58,7 @@ class Register extends Component {
             <Jumbotron>
               <h1>Register</h1>
             </Jumbotron>
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               <Input
                 value={this.state.firstName}
                 onChange={this.handleInputChange}
@@ -99,8 +86,8 @@ class Register extends Component {
                 placeholder="Password"
               />
               <FormBtn
+                type="submit"
                 disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
-                onClick={this.handleFormSubmit}
               >
                 Sign Up
               </FormBtn>
