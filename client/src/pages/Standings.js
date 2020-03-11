@@ -18,14 +18,18 @@ class Chart extends Component {
         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=2&page=1&sparkline=true"
       )
       .then(res => {
-      
         const x = res.data;
         let chartData = [];
         x.forEach(element => {
           chartData.push({
-            labels: ["Griffindor", "Slytherin", "Ravenclaw", "Hufflepuff", "hog"],
+            labels: ["Griffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
             datasets: [{ data: element.sparkline_in_7d.price,
-                        backgroundColor: "rgba(230, 140, 15, 0.5)" }]
+                        backgroundColor: ["rgba(139, 23, 23, 0.5)",
+                                          "rgba(32, 103, 29, 0.5)",
+                                          "rgba(11, 37, 141, 0.5)",
+                                          "rgba(202, 183, 6, 0.5)"],
+                        label:["Griffindor"]
+                                        }]
           });
         });
         this.setState({ chartData });
