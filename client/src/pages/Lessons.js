@@ -10,11 +10,12 @@ import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
 
 class LogIn extends Component {
   state = {
-    lessonData: [
-      "This is the 1st paragraph",
-      "This is the 2st paragraph",
-      "This is the 3st paragraph"
+    lesson: [
+      {name:"1", value:"This is the 1st paragraph"},
+      {name:"2", value:"This is the 2nd paragraph"},
+      {name:"3", value:"This is the 3rd paragraph"},
     ],
+    openedList: [],
     username: "",
     email: "",
     house: ""
@@ -22,6 +23,16 @@ class LogIn extends Component {
 
   componentDidMount() {
     // this.loadBooks();
+  }
+
+  checkOpened = (num) => {
+    // let list = this.state.openedList;
+    // list.push(num)
+    // list.sort(list.map(item => parseInt(item)))
+    // console.log(list)
+    // this.setState({
+    //   openedList: list
+    // })
   }
 
   // loadBooks = () => {
@@ -33,20 +44,20 @@ class LogIn extends Component {
   // };
 
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    console.log("submit works")
-    if (this.state.username && this.state.email && this.state.house) {
-      //Put code here
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   console.log("submit works")
+  //   if (this.state.username && this.state.email && this.state.house) {
+  //     //Put code here
+  //   }
+  // };
 
   render() {
     return (
@@ -59,27 +70,24 @@ class LogIn extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
-            {this.state.books.length ? (
+          <Col size="md-12">
+            {this.state.lesson.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Button color="primary" id={"toggler"+book._id} style={{ marginBottom: '1rem' }}>
+                {this.state.lesson.map(book => (
+                  <ListItem key={book.name}>
+                    <Button color="primary" id={"toggler"+book.name} style={{ marginBottom: '1rem' }}
+                      onClick={() => this.checkOpened(book.name)}>
                       <strong>
-                        {book.title} by {book.author}
+                        Lesson {book.name}
                       </strong>
                     </Button>
-                    <UncontrolledCollapse toggler={"#toggler"+book._id}>
+                    <UncontrolledCollapse toggler={"#toggler"+book.name}>
                       <Card>
                         <CardBody>
-                          <img src={book.image}></img>
-                          <hr></hr>
-                          Description: {book.description}
+                          {book.value}
                         </CardBody>
                       </Card>
                     </UncontrolledCollapse>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                    <ViewBtn onClick={() => this.linkBook(book.link)} />
                   </ListItem>
                 ))}
               </List>
