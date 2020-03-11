@@ -1,13 +1,17 @@
 import React from "react";
-
-function Nav() {
+import { Nav, NavItem, NavLink } from 'reactstrap';
+import "./style.css";
+function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
-        Project 3
-      </a>
-    </nav>
+    <Nav className=" navbar-expand-lg navbar-dark">
+      <NavLink className="navbar-brand" href="/">
+        React
+      </NavLink>
+      <NavItem>
+        <NavLink href="#" active>Link</NavLink>
+      </NavItem>
+    </Nav>
   );
 }
 
-export default Nav;
+export default Navbar;
