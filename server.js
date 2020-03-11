@@ -5,6 +5,7 @@ const session = require('express-session')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('./config')
+const routes = require("./routes")
 
 
 const app = express();
@@ -24,6 +25,9 @@ app.use(bodyParser.json());
 //Passport
 app.use(passport.initialize())
 app.use(passport.session())
+
+//Routes
+app.use(routes)
 
 //db
 mongoose.connect("mongodb://localhost/sfw")
