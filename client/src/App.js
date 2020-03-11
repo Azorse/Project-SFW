@@ -6,17 +6,17 @@ import Register from "./pages/Register"
 // import Standings from "./pages/Standings"
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import Standings from "./pages/Standings"
+import Standings from "./pages/Standings";
 
 function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <Switch>
           <Route exact path="/" component={LogIn} />
           <Route exact path="/home" component={Home} />
-          <Route path="/standings" component={Standings}/>
+          <Route path="/standings" component={Standings} />
           <Route exact path="/register" component={Register} />
           <Route component={NoMatch} />
         </Switch>

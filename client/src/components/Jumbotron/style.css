@@ -5,3 +5,7 @@
 .jumbotron {
   background-color: rgba(52, 53, 53, 0.425);
 }
+img {
+  height: 250px;
+  margin-bottom: 50px;
+}

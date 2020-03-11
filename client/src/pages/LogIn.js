@@ -6,18 +6,18 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import Gryffindor from "../components/Images/gryffindorSmall.png"
-import Hufflepuff from "../components/Images/hufflepuffSmall.png"
-import Ravenclaw from "../components/Images/ravenclawSmall.png"
-import Slytherin from "../components/Images/slytherinSmall.png"
+import Gryffindor from "../components/Images/gryffindorSmall.png";
+import Hufflepuff from "../components/Images/hufflepuffSmall.png";
+import Ravenclaw from "../components/Images/ravenclawSmall.png";
+import Slytherin from "../components/Images/slytherinSmall.png";
 
-class Home extends Component {
+class Login extends Component {
   state = {
     images: [
-      {name: Gryffindor, value: "gryffindor"}, 
-      {name: Hufflepuff, value: "hufflepuff"},
-      {name: Ravenclaw, value: "ravenclaw"},
-      {name: Slytherin, value: "slytherin"}
+      { name: Gryffindor, value: "gryffindor" },
+      { name: Hufflepuff, value: "hufflepuff" },
+      { name: Ravenclaw, value: "ravenclaw" },
+      { name: Slytherin, value: "slytherin" }
     ],
     username: "",
     email: "",
@@ -37,28 +37,28 @@ class Home extends Component {
   // };
 
   checkImg = (e, value) => {
-    console.log(value)
-    switch(value){
+    console.log(value);
+    switch (value) {
       case Gryffindor:
-        console.log("chose the good boys")
+        console.log("chose the good boys");
         this.setState({
           house: "gryffindor"
         });
         break;
       case Hufflepuff:
-        console.log("chose the boring boys")
+        console.log("chose the boring boys");
         this.setState({
           house: "hufflepuff"
         });
         break;
       case Ravenclaw:
-        console.log("chose the nerdy boys")
+        console.log("chose the nerdy boys");
         this.setState({
           house: "ravenclaw"
         });
         break;
       case Slytherin:
-        console.log("chose the cool boys")
+        console.log("chose the cool boys");
         this.setState({
           house: "slytherin"
         });
@@ -75,7 +75,7 @@ class Home extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("submit works")
+    console.log("submit works");
     if (this.state.username && this.state.email && this.state.house) {
       //Put code here
     }
@@ -86,9 +86,7 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-              <h1>Log In</h1>
-            </Jumbotron>
+            <Jumbotron />
             <form>
               <Input
                 value={this.state.username}
@@ -109,9 +107,10 @@ class Home extends Component {
                 placeholder="Synopsis (Optional)"
               /> */}
               <FormBtn
-                disabled={!(this.state.username && this.state.email && this.state.house)}
-                onClick={this.handleFormSubmit}
-              >
+                disabled={
+                  !(this.state.username && this.state.email && this.state.house)
+                }
+                onClick={this.handleFormSubmit}>
                 Submit
               </FormBtn>
             </form>
@@ -120,7 +119,13 @@ class Home extends Component {
         <Row>
           {this.state.images.map(image => (
             <ListItem>
-              <img src={image.name} id={image.value} width="200" height="250" value={image.value} onClick={((e) => this.checkImg(e, image.name))}></img>
+              <img
+                src={image.name}
+                id={image.value}
+                width="200"
+                height="250"
+                value={image.value}
+                onClick={e => this.checkImg(e, image.name)}></img>
             </ListItem>
           ))}
         </Row>
@@ -129,4 +134,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Login;
