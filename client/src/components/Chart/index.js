@@ -1,11 +1,7 @@
 import React from "react";
-import {Bar, Line, Pie} from 'react-chartjs-2'
+import {Bar} from 'react-chartjs-2'
 
 class Chart extends React.Component {
-
-    constructor(props){
-        super(props);
-    }
 
     static defaultProps = {
         displayTitle: true,
@@ -18,7 +14,7 @@ class Chart extends React.Component {
         return (
             <div className="chart">
                 <Bar
-                    key= {this.props.data.name}
+                    key= ""
                     data={this.props.data}
                     options={{ 
                         maintainAspectRatio: true,
