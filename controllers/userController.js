@@ -1,5 +1,8 @@
-const db = require("../models");
 const bcrypt = require("bcryptjs")
+const db = require("../models");
+const passport = require("../passport")
+
+
 
 // Defining methods for the booksController
 module.exports = {
@@ -10,15 +13,28 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },  
   create: function(req, res) {
-    console.log(req.body.pass)
+    console.log(req.body)
     const {firstName, lastName, email, password} = req.body
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-    const newUser = new User({firstName, lastName, email, password: hashedPassword})
-
+    let newUser = {firstName, lastName, email, password: hashedPassword}
+    console.log(newUser)
     db.User
-      .save()
+      .create(newUser)
       .then(dbModel => res.json(dbModel))
       .catch(err => {res.status(422).json({message: "That email is already taken"})});
+  },
+  userLogin: function(req, res, next) {
+    console.log(req.body)
+    const {email, password} = req.body
+    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+    let thisUser = {email, password: hashedPassword}
+    console.log(thisUser)
+
+    passport.authenticate('local', {
+      successRedirect: '/home',
+      failureRedirect: '/login',
+      failureFlash: true  
+    })(req, res, next)
   },
   update: function(req, res) {
     db.User

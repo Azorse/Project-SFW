@@ -17,6 +17,9 @@ const API = {
   saveUser: function(userData) {
     return axios.post("/api/users", userData);
   },
+  userLogin: function(userInfo) {
+    return axios.post("/api/users", userInfo)
+  }
 
 };
 

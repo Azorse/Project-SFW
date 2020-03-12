@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
 import Jumbotron from "../components/Jumbotron";
+import { Redirect } from 'react-router';
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -11,7 +12,7 @@ import Hufflepuff from "../components/Images/hufflepuffSmall.png"
 import Ravenclaw from "../components/Images/ravenclawSmall.png"
 import Slytherin from "../components/Images/slytherinSmall.png"
 
-class Home extends Component {
+class LogIn extends Component {
   state = {
     images: [
       {name: Gryffindor, value: "gryffindor"}, 
@@ -19,22 +20,15 @@ class Home extends Component {
       {name: Ravenclaw, value: "ravenclaw"},
       {name: Slytherin, value: "slytherin"}
     ],
-    username: "",
     email: "",
-    house: ""
+    password: "",
+    house: "",
+    redirect: false
   };
 
   componentDidMount() {
     // this.loadBooks();
   }
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
 
   checkImg = (e, value) => {
     console.log(value)
@@ -76,46 +70,55 @@ class Home extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log("submit works")
-    if (this.state.username && this.state.email && this.state.house) {
-      //Put code here
+    if (this.state.email && this.state.password) {
+      console.log(`submitted`)
+      API.userLogin({
+        email:this.state.email,
+        password:this.state.password
+      })
+      .then(console.log(`success`))
+      .catch(err => console.log(err))
     }
+
   };
 
   render() {
+
+    const {redirect} = this.state;
+
+    if (redirect) { return <Redirect to='/Home' />}
     return (
       <Container fluid>
         <Row>
-          <Col size="md-12">
+          <Col size="md-4"></Col>
+          <Col size="md-4">
             <Jumbotron>
               <h1>Log In</h1>
             </Jumbotron>
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
-                name="username"
-                placeholder="Username (required)"
+                name="email"
+                type="email"
+                placeholder="Email"
               />
               <Input
-                value={this.state.email}
+                value={this.state.password}
                 onChange={this.handleInputChange}
-                name="email"
-                placeholder="Email (required)"
+                name="password"
+                type="password"
+                placeholder="Password"
               />
-              {/* <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              /> */}
               <FormBtn
-                disabled={!(this.state.username && this.state.email && this.state.house)}
-                onClick={this.handleFormSubmit}
+                type="submit"
+                disabled={!(this.state.email && this.state.password)}
               >
                 Submit
               </FormBtn>
             </form>
           </Col>
+          <Col size="md-4"></Col>
         </Row>
         <Row>
           {this.state.images.map(image => (
@@ -129,4 +132,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default LogIn;
