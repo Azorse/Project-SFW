@@ -23,7 +23,9 @@ class LogIn extends Component {
     email: "",
     password: "",
     house: "",
-    redirect: false
+    loggedIn: false,
+    user: null,
+    message: ""
   };
 
   componentDidMount() {
@@ -69,14 +71,25 @@ class LogIn extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("submit works")
     if (this.state.email && this.state.password) {
       console.log(`submitted`)
       API.userLogin({
         email:this.state.email,
         password:this.state.password
       })
-      .then(console.log(`success`))
+      .then(user => {
+        console.log(user)
+        if (user.data.loggedIn) {
+          this.setState({
+            loggedin: true, 
+            user: user.data.user
+          })
+        } else if (user.data.message) {
+          this.setState({
+            message: user.data.message
+          })
+        }
+      })
       .catch(err => console.log(err))
     }
 
@@ -84,9 +97,6 @@ class LogIn extends Component {
 
   render() {
 
-    const {redirect} = this.state;
-
-    if (redirect) { return <Redirect to='/Home' />}
     return (
       <Container fluid>
         <Row>

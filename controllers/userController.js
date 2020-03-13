@@ -23,7 +23,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => {res.status(422).json({message: "That email is already taken"})});
   },
-  userLogin: function(req, res, next) {
+  //QUESTION IS THE FUNCTION NOT GETTING THE CORRECT USERINFO?
+  login: function(req, res, next) {
     console.log(req.body)
     const {email, password} = req.body
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
@@ -31,10 +32,15 @@ module.exports = {
     console.log(thisUser)
 
     passport.authenticate('local', {
-      successRedirect: '/home',
       failureRedirect: '/login',
       failureFlash: true  
-    })(req, res, next)
+    }), (req, res, next) => {
+      console.log(`passport success`)
+      res.status(200).json({
+        user: req.user,
+        loggedIn: true
+      })
+    }
   },
   update: function(req, res) {
     db.User

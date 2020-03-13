@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcryptjs')
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
@@ -25,6 +25,10 @@ const UserSchema = new Schema({
         default: Date.now
     }
 })
+
+UserSchema.methods.validPassword = (password, encrypted) => {
+    return bcrypt.compareSync(password, encrypted);
+}
 
 const User = mongoose.model('User', UserSchema);
 
