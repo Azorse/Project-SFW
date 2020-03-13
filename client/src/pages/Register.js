@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-import Jumbotron from "../components/Jumbotron";
-import { Redirect } from 'react-router';
+import { Jumbotron } from "../components/Jumbotron";
+
+import { Redirect } from "react-router";
 import API from "../utils/API.js";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-
 
 class Register extends Component {
   state = {
@@ -40,15 +40,17 @@ class Register extends Component {
         email: this.state.email,
         password: this.state.password
       })
-      .then(()=> this.setState({redirect: true}))
-      .catch(err => console.log(err));
+        .then(() => this.setState({ redirect: true }))
+        .catch(err => console.log(err));
     }
   };
 
   render() {
-    const {redirect} = this.state;
+    const { redirect } = this.state;
 
-    if(redirect) { return <Redirect to='/'/> }
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <Container fluid>
@@ -87,7 +89,14 @@ class Register extends Component {
               />
               <FormBtn
                 type="submit"
-                disabled={!(this.state.firstName && this.state.lastName && this.state.email && this.state.password)}
+                disabled={
+                  !(
+                    this.state.firstName &&
+                    this.state.lastName &&
+                    this.state.email &&
+                    this.state.password
+                  )
+                }
               >
                 Sign Up
               </FormBtn>

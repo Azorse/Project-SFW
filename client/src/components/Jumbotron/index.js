@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Jumbotron as Jtron, Button, Row } from "reactstrap";
-function Jumbotron(props) {
+export function Jumbotron(props) {
   return (
     <Jtron>
       <Row className="justify-content-between">
@@ -24,6 +24,19 @@ function Jumbotron(props) {
         </Button>{" "}
       </Row>
     </Jtron>
+  );
+}
+export function Jumbotron2({ children }) {
+  return (
+    <div
+      style={{
+        clear: "both",
+        textAlign: "center"
+      }}
+      className="jumbotron"
+    >
+      {children}
+    </div>
   );
 }
 
