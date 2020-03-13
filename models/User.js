@@ -11,13 +11,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    username: {
-      type: String,
-      required: true
-    },
     houseName: {
       type: String,
-      required: true
+      required: false
     },
     lessonData: {
       type: Number,

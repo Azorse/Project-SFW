@@ -1,15 +1,25 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
+const passport = require("passport")
 
 
-// Matches with "/api/users"
-router.route("/")
-  .post( async ()=> {
-    //await userController.create()
-    await userController.login()
-    
-  })
+// Login
+router.post('/login', (req, res, next) => {
+  console.log(req.body)
+  passport.authenticate('local', {
+    successRedirect: '/home',
+    failureRedirect: '/',
+    failureFlash: true
+  })(req, res, next);
+});
+
+router.route("/register")
+  .post(userController.create)
   
+router.route('/logout')
+  .get(userController.logOut)
+
+
 
 
 // Matches with "/api/users/:id"

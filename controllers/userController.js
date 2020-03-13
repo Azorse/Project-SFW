@@ -1,10 +1,9 @@
 const bcrypt = require("bcryptjs")
 const db = require("../models");
-const passport = require("../passport")
+const passport = require("../passport/passport")
 
 
-
-// Defining methods for the booksController
+// Defining methods
 module.exports = {
   findById: function(req, res) {
     db.User
@@ -23,24 +22,12 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => {res.status(422).json({message: "That email is already taken"})});
   },
-  //QUESTION IS THE FUNCTION NOT GETTING THE CORRECT USERINFO?
   login: function(req, res, next) {
-    console.log(req.body)
-    const {email, password} = req.body
-    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-    let thisUser = {email, password: hashedPassword}
-    console.log(thisUser)
-
-    passport.authenticate('local', {
-      failureRedirect: '/login',
-      failureFlash: true  
-    }), (req, res, next) => {
-      console.log(`passport success`)
-      res.status(200).json({
-        user: req.user,
-        loggedIn: true
-      })
-    }
+  passport.authenticate('local', {
+    successRedirect: '/home',
+    failureRedirect: '/',
+    failureFlash: true
+  })(req, res, next);
   },
   update: function(req, res) {
     db.User
@@ -54,5 +41,11 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  logOut: function(req, res) {
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/');
   }
+
 };

@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-<<<<<<< HEAD
-import Jumbotron from "../components/Jumbotron";
-import { Redirect } from 'react-router';
-=======
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
->>>>>>> 545565421c0aab19fad62594c5e0fc0e90cf3fe1
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -81,19 +76,7 @@ class LogIn extends Component {
         email:this.state.email,
         password:this.state.password
       })
-      .then(user => {
-        console.log(user)
-        if (user.data.loggedIn) {
-          this.setState({
-            loggedin: true, 
-            user: user.data.user
-          })
-        } else if (user.data.message) {
-          this.setState({
-            message: user.data.message
-          })
-        }
-      })
+      .then(`.then ran`)
       .catch(err => console.log(err))
     }
 

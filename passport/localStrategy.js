@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs")
 
 
 const strategy = new localStrategy({ usernameField: "email" }, (email, password, done) => {
-    console.log(`looking in db`)
     // Match user
     db.User.findOne({ email: email }).then(err, user => {
       if (err) {
@@ -22,4 +21,4 @@ const strategy = new localStrategy({ usernameField: "email" }, (email, password,
     });
 });
 
-module.exports = strategy
+//module.exports = strategy

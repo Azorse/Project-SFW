@@ -39,8 +39,7 @@ class Home extends Component {
           "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
       }
     ],
-    username: "",
-    email: "",
+    firstName: "",
     house: "",
     houseImg: "",
     houseData: ""
