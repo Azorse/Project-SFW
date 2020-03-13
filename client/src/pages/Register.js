@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-import Jumbotron from "../components/Jumbotron";
+import {Jumbotron} from "../components/Jumbotron";
 import { Redirect } from 'react-router';
 import API from "../utils/API.js";
 import axios from "axios";

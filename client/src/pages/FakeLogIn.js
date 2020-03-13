@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-import {Jumbotron} from "../components/Jumbotron";
+import {Jumbotron2 as Jumbotron} from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -82,12 +82,27 @@ class LogIn extends Component {
   };
 
   render() {
+    const {firstname, secondname, username, email, password, house} = this.state
     return (
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron />
+            <Jumbotron>
+              <h1>Log In</h1>
+            </Jumbotron>
             <form>
+            <Input
+                value={this.state.firstname}
+                onChange={this.handleInputChange}
+                name="firstname"
+                placeholder="First Name (required)"
+              />
+              <Input
+                value={this.state.secondname}
+                onChange={this.handleInputChange}
+                name="secondname"
+                placeholder="Second Name (required)"
+              />
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
@@ -100,15 +115,15 @@ class LogIn extends Component {
                 name="email"
                 placeholder="Email (required)"
               />
-              {/* <TextArea
-                value={this.state.synopsis}
+              <Input
+                value={this.state.password}
                 onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              /> */}
+                name="password"
+                placeholder="Password (required)"
+              />
               <FormBtn
                 disabled={
-                  !(this.state.username && this.state.email && this.state.house)
+                  !(firstname && secondname && username && email && password && house)
                 }
                 onClick={this.handleFormSubmit}>
                 Submit
