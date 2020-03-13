@@ -6,9 +6,9 @@ export function Jumbotron(props) {
   return (
     <Jtron>
       <Row className="justify-content-between">
-        <img src={props.image} alt="House Crest" />{" "}
+        <img src={props.image} width="200" height="250" alt="House Crest" />{" "}
         <h1>{props.house}</h1>
-        <img src={props.image} alt="House Crest" />{" "}
+        <img src={props.image} width="200" height="250" alt="House Crest" />{" "}
       </Row>
       <Row className="d-flex justify-content-between pb-3 text-center Button">
         <Link to="/lessons">
@@ -49,13 +49,13 @@ export function Jumbotron2({ children }) {
   );
 }
 
-export function Jumbotron2({ children }) {
-  return (
-    <div
-      style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
-      className="jumbotron"
-    >
-      {children}
-    </div>
-  );
-}
+// export function Jumbotron2({ children }) {
+//   return (
+//     <div
+//       style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
+//       className="jumbotron"
+//     >
+//       {children}
+//     </div>
+//   );
+// }
