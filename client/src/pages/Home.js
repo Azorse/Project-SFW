@@ -111,7 +111,7 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
+            <Jumbotron house={house} image={houseImg}>
               <h1> {house} </h1>
               <br></br>
               <Row>
@@ -148,8 +148,18 @@ class Home extends Component {
           </Col>
         </Row>
         <Row>
-          <img src={houseImg} width="200" height="250"></img>
-          <h3>{houseData}</h3>
+          <img src={houseImg} width="200" height="250" className="center"></img>          
+          <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+          </style>
+          <h3 className="center">{houseData}</h3>
         </Row>
       </Container>
     );

@@ -1,6 +1,6 @@
-* {
+/* * {
   font-size: 1.5em;
-}
+} */
 h1 {
   color: gold;
   font-family: myFirstFont;
@@ -9,6 +9,5 @@ h1 {
   background-color: rgba(52, 53, 53, 0.425);
 }
 img {
-  height: 325px;
   margin-bottom: 50px;
 }

@@ -4,14 +4,14 @@ import "./style.css";
 function TopNavbar() {
   return (
     <Navbar expand="lg" dark={true}>
-      <NavbarBrand href="/">React</NavbarBrand>
-      <Nav className="mr-auto" navbar>
+      <NavbarBrand href="/">Harry Potter Web App</NavbarBrand>
+      {/* <Nav className="mr-auto" navbar>
         <NavItem>
-          <NavLink href="#" active>
-            Link
+          <NavLink href="/" active>
+            LogIn
           </NavLink>
         </NavItem>
-      </Nav>
+      </Nav> */}
     </Navbar>
   );
 }

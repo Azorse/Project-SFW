@@ -11,6 +11,17 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    username: {
+      type: String,
+      required: true
+    },
+    houseName: {
+      type: String,
+      required: true
+    },
+    lessonData: {
+      type: Number,
+    },
     email: {
         type: String,
         required: true,
