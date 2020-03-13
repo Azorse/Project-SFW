@@ -2,12 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 import Home from "./pages/Home";
-import Register from "./pages/Register"
+import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import Standings from "./pages/Standings"
-import Lessons from "./pages/Lessons"
-import Quiz from "./pages/Quiz"
+import Standings from "./pages/Standings";
+import Lessons from "./pages/Lessons";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={LogIn} />
           <Route exact path="/home" component={Home} />
-          <Route exact path="/standings" component={Standings}/>
+          <Route exact path="/standings" component={Standings} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/lessons" component={Lessons} />
           <Route exact path="/quiz" component={Quiz} />

@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-import Jumbotron from "../components/Jumbotron";
+import { Jumbotron } from "../components/Jumbotron";
+
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import { UncontrolledCollapse, Button, CardBody, Card } from 'reactstrap';
+import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
 
 class LogIn extends Component {
   state = {
     lesson: [
-      {name:"1", value:"This is the 1st paragraph"},
-      {name:"2", value:"This is the 2nd paragraph"},
-      {name:"3", value:"This is the 3rd paragraph"},
+      { name: "1", value: "This is the 1st paragraph" },
+      { name: "2", value: "This is the 2nd paragraph" },
+      { name: "3", value: "This is the 3rd paragraph" }
     ],
     openedList: [],
     username: "",
@@ -25,7 +26,7 @@ class LogIn extends Component {
     // this.loadBooks();
   }
 
-  checkOpened = (num) => {
+  checkOpened = num => {
     // let list = this.state.openedList;
     // list.push(num)
     // list.sort(list.map(item => parseInt(item)))
@@ -33,7 +34,7 @@ class LogIn extends Component {
     // this.setState({
     //   openedList: list
     // })
-  }
+  };
 
   // loadBooks = () => {
   //   API.getBooks()
@@ -42,7 +43,6 @@ class LogIn extends Component {
   //     )
   //     .catch(err => console.log(err));
   // };
-
 
   // handleInputChange = event => {
   //   const { name, value } = event.target;
@@ -75,17 +75,17 @@ class LogIn extends Component {
               <List>
                 {this.state.lesson.map(book => (
                   <ListItem key={book.name}>
-                    <Button color="primary" id={"toggler"+book.name} style={{ marginBottom: '1rem' }}
-                      onClick={() => this.checkOpened(book.name)}>
-                      <strong>
-                        Lesson {book.name}
-                      </strong>
+                    <Button
+                      color="primary"
+                      id={"toggler" + book.name}
+                      style={{ marginBottom: "1rem" }}
+                      onClick={() => this.checkOpened(book.name)}
+                    >
+                      <strong>Lesson {book.name}</strong>
                     </Button>
-                    <UncontrolledCollapse toggler={"#toggler"+book.name}>
+                    <UncontrolledCollapse toggler={"#toggler" + book.name}>
                       <Card>
-                        <CardBody>
-                          {book.value}
-                        </CardBody>
+                        <CardBody>{book.value}</CardBody>
                       </Card>
                     </UncontrolledCollapse>
                   </ListItem>
