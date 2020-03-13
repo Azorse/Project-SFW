@@ -1,23 +1,43 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-import {Jumbotron} from "../components/Jumbotron";
+import { Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import Gryffindor from "../components/Images/gryffindorSmall.png"
-import Hufflepuff from "../components/Images/hufflepuffSmall.png"
-import Ravenclaw from "../components/Images/ravenclawSmall.png"
-import Slytherin from "../components/Images/slytherinSmall.png"
+import Gryffindor from "../components/Images/gryffindorSmall.png";
+import Hufflepuff from "../components/Images/hufflepuffSmall.png";
+import Ravenclaw from "../components/Images/ravenclawSmall.png";
+import Slytherin from "../components/Images/slytherinSmall.png";
 
 class Home extends Component {
   state = {
     images: [
-      {name: Gryffindor, value: "Gryffindor", data: "The Gryffindor house emphasises the traits of courage as well as daring, nerve, and chivalry, and thus its members are generally regarded as brave, though sometimes to the point of recklessness. Some Gryffindors have also been noted to be short-tempered."}, 
-      {name: Hufflepuff, value: "Hufflepuff", data: "Students belonging to this house are known to be hard-working, friendly, loyal, honest and rather impartial. It may be that due to their values, Hufflepuffs are not as competitive as the other houses, and are more modest about their accomplishments. Hufflepuff is the most inclusive among the four houses; valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its students."},
-      {name: Ravenclaw, value: "Ravenclaw", data: "Ravenclaw House prizes learning, wisdom, wit, and intellect in its members. Thus, many Ravenclaws tend to be academically motivated and talented students. They also pride themselves on being original in their ideas, and methods. It's not unusual to find Ravenclaw students practising especially different types of magic that other houses might shun."},
-      {name: Slytherin, value: "Slytherin", data: "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."}
+      {
+        name: Gryffindor,
+        value: "Gryffindor",
+        data:
+          "The Gryffindor house emphasises the traits of courage as well as daring, nerve, and chivalry, and thus its members are generally regarded as brave, though sometimes to the point of recklessness. Some Gryffindors have also been noted to be short-tempered."
+      },
+      {
+        name: Hufflepuff,
+        value: "Hufflepuff",
+        data:
+          "Students belonging to this house are known to be hard-working, friendly, loyal, honest and rather impartial. It may be that due to their values, Hufflepuffs are not as competitive as the other houses, and are more modest about their accomplishments. Hufflepuff is the most inclusive among the four houses; valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its students."
+      },
+      {
+        name: Ravenclaw,
+        value: "Ravenclaw",
+        data:
+          "Ravenclaw House prizes learning, wisdom, wit, and intellect in its members. Thus, many Ravenclaws tend to be academically motivated and talented students. They also pride themselves on being original in their ideas, and methods. It's not unusual to find Ravenclaw students practising especially different types of magic that other houses might shun."
+      },
+      {
+        name: Slytherin,
+        value: "Slytherin",
+        data:
+          "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
+      }
     ],
     username: "",
     email: "",
@@ -31,38 +51,38 @@ class Home extends Component {
   }
 
   // Will need modification after creating the database and api calls
-  loadUser = (id) => {
+  loadUser = id => {
     // API.getUser(id)
     //   .then(res =>
     //     this.setState({ username: res.data.username, house: res.data.house })
     //   )
     //   .catch(err => console.log(err));
-    const num = Math.floor(Math.random()*4);
+    const num = Math.floor(Math.random() * 4);
     let theHouse = this.state.images[num].value;
     let houseDesc = "";
     console.log(num);
     console.log(theHouse);
     this.setState({ house: theHouse });
     // this.setState({ username: "Bob", house: theHouse})
-    switch(theHouse){
+    switch (theHouse) {
       case this.state.images[0].value:
-        theHouse = this.state.images[0].name
-        houseDesc = this.state.images[0].data
+        theHouse = this.state.images[0].name;
+        houseDesc = this.state.images[0].data;
         break;
       case this.state.images[1].value:
-        theHouse = this.state.images[1].name
-        houseDesc = this.state.images[1].data
+        theHouse = this.state.images[1].name;
+        houseDesc = this.state.images[1].data;
         break;
       case this.state.images[2].value:
-        theHouse = this.state.images[2].name
-        houseDesc = this.state.images[2].data
+        theHouse = this.state.images[2].name;
+        houseDesc = this.state.images[2].data;
         break;
       case this.state.images[3].value:
-        theHouse = this.state.images[3].name
-        houseDesc = this.state.images[3].data
+        theHouse = this.state.images[3].name;
+        houseDesc = this.state.images[3].data;
         break;
     }
-    this.setState({ houseImg: theHouse, houseData: houseDesc })
+    this.setState({ houseImg: theHouse, houseData: houseDesc });
   };
 
   // handleInputChange = event => {
@@ -86,7 +106,7 @@ class Home extends Component {
   // };
 
   render() {
-    const {houseImg, houseData, house} = this.state
+    const { houseImg, houseData, house } = this.state;
     return (
       <Container fluid>
         <Row>

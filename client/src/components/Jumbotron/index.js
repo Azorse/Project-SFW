@@ -35,6 +35,19 @@ export function Jumbotron(props) {
     </Jtron>
   );
 }
+export function Jumbotron2({ children }) {
+  return (
+    <div
+      style={{
+        clear: "both",
+        textAlign: "center"
+      }}
+      className="jumbotron"
+    >
+      {children}
+    </div>
+  );
+}
 
 export function Jumbotron2({ children }) {
   return (

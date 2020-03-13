@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-import {Jumbotron} from "../components/Jumbotron";
+import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -14,10 +14,10 @@ import Slytherin from "../components/Images/slytherinSmall.png";
 class LogIn extends Component {
   state = {
     images: [
-      {name: Gryffindor, value: "Gryffindor"}, 
-      {name: Hufflepuff, value: "Hufflepuff"},
-      {name: Ravenclaw, value: "Ravenclaw"},
-      {name: Slytherin, value: "Slytherin"}
+      { name: Gryffindor, value: "Gryffindor" },
+      { name: Hufflepuff, value: "Hufflepuff" },
+      { name: Ravenclaw, value: "Ravenclaw" },
+      { name: Slytherin, value: "Slytherin" }
     ],
     username: "",
     email: "",
@@ -83,10 +83,15 @@ class LogIn extends Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
           <Col size="md-12">
-            <Jumbotron />
+            <Jumbotron>
+              {" "}
+              <img src="./images/hogwarts.png" alt="Hogwarts Crest" />
+              <h1>Log In</h1>{" "}
+            </Jumbotron>
+
             <form>
               <Input
                 value={this.state.username}
@@ -110,7 +115,8 @@ class LogIn extends Component {
                 disabled={
                   !(this.state.username && this.state.email && this.state.house)
                 }
-                onClick={this.handleFormSubmit}>
+                onClick={this.handleFormSubmit}
+              >
                 Submit
               </FormBtn>
             </form>
@@ -125,7 +131,8 @@ class LogIn extends Component {
                 width="200"
                 height="250"
                 value={image.value}
-                onClick={e => this.checkImg(e, image.name)}></img>
+                onClick={e => this.checkImg(e, image.name)}
+              ></img>
             </ListItem>
           ))}
         </Row>
