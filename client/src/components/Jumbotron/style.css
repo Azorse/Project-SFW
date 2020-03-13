@@ -1,7 +1,13 @@
-/* h1 {
+/* * {
+  font-size: 1.5em;
+} */
+h1 {
   color: gold;
   font-family: myFirstFont;
-} */
+}
 .jumbotron {
   background-color: rgba(52, 53, 53, 0.425);
+}
+img {
+  margin-bottom: 50px;
 }

@@ -1,12 +1,20 @@
 @font-face {
-  font-family: myFirstFont;
+  font-family: "myFirstFont";
   src: url(./Media-Files/Fonts/MagicSchoolOne-ovYz.ttf);
+}
+@font-face {
+  font-family: "secondFont";
+  src: url(./Media-Files/Fonts/Dumbledor2Thin-3a3M.ttf);
 }
 
 h1 {
   color: gold;
-  font-family: myFirstFont;
+  font-family: "myFirstFont";
+}
+button {
+  font-family: "secondFont";
 }
 body {
   background-image: url(./Media-Files/32966.jpg);
+  font-family: "secondFont";
 }

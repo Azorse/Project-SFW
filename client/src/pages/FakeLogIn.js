@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
-<<<<<<< HEAD
-import Jumbotron from "../components/Jumbotron";
-import { Redirect } from 'react-router';
-=======
-import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
->>>>>>> 545565421c0aab19fad62594c5e0fc0e90cf3fe1
+import {Jumbotron2 as Jumbotron} from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -19,22 +14,27 @@ import Slytherin from "../components/Images/slytherinSmall.png";
 class LogIn extends Component {
   state = {
     images: [
-      { name: Gryffindor, value: "Gryffindor" },
-      { name: Hufflepuff, value: "Hufflepuff" },
-      { name: Ravenclaw, value: "Ravenclaw" },
-      { name: Slytherin, value: "Slytherin" }
+      {name: Gryffindor, value: "Gryffindor"}, 
+      {name: Hufflepuff, value: "Hufflepuff"},
+      {name: Ravenclaw, value: "Ravenclaw"},
+      {name: Slytherin, value: "Slytherin"}
     ],
+    username: "",
     email: "",
-    password: "",
-    house: "",
-    loggedIn: false,
-    user: null,
-    message: ""
+    house: ""
   };
 
   componentDidMount() {
     // this.loadBooks();
   }
+
+  // loadBooks = () => {
+  //   API.getBooks()
+  //     .then(res =>
+  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   checkImg = (e, value) => {
     console.log(value);
@@ -75,66 +75,61 @@ class LogIn extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.email && this.state.password) {
-      console.log(`submitted`)
-      API.userLogin({
-        email:this.state.email,
-        password:this.state.password
-      })
-      .then(user => {
-        console.log(user)
-        if (user.data.loggedIn) {
-          this.setState({
-            loggedin: true, 
-            user: user.data.user
-          })
-        } else if (user.data.message) {
-          this.setState({
-            message: user.data.message
-          })
-        }
-      })
-      .catch(err => console.log(err))
+    console.log("submit works");
+    if (this.state.username && this.state.email && this.state.house) {
+      //Put code here
     }
-
   };
 
   render() {
-
+    const {firstname, secondname, username, email, password, house} = this.state
     return (
-      <Container>
+      <Container fluid>
         <Row>
-          <Col size="md-4"></Col>
-          <Col size="md-4">
+          <Col size="md-12">
             <Jumbotron>
-              {" "}
-              <img src="./images/hogwarts.png" alt="Hogwarts Crest" />
-              <h1>Log In</h1>{" "}
+              <h1>Log In</h1>
             </Jumbotron>
-            <form onSubmit={this.handleFormSubmit}>
+            <form>
+            <Input
+                value={this.state.firstname}
+                onChange={this.handleInputChange}
+                name="firstname"
+                placeholder="First Name (required)"
+              />
+              <Input
+                value={this.state.secondname}
+                onChange={this.handleInputChange}
+                name="secondname"
+                placeholder="Second Name (required)"
+              />
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
+                name="username"
+                placeholder="Username (required)"
+              />
+              <Input
+                value={this.state.email}
+                onChange={this.handleInputChange}
                 name="email"
-                type="email"
-                placeholder="Email"
+                placeholder="Email (required)"
               />
               <Input
                 value={this.state.password}
                 onChange={this.handleInputChange}
                 name="password"
-                type="password"
-                placeholder="Password"
+                placeholder="Password (required)"
               />
               <FormBtn
-                type="submit"
-                disabled={!(this.state.email && this.state.password)}
-              >
+                disabled={
+                  !(firstname && secondname && username && email && password && house)
+                }
+                onClick={this.handleFormSubmit}>
                 Submit
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-4"></Col>
         </Row>
         <Row>
           {this.state.images.map(image => (
@@ -145,8 +140,7 @@ class LogIn extends Component {
                 width="200"
                 height="250"
                 value={image.value}
-                onClick={e => this.checkImg(e, image.name)}
-              ></img>
+                onClick={e => this.checkImg(e, image.name)}></img>
             </ListItem>
           ))}
         </Row>

@@ -1,17 +1,19 @@
 import React from "react";
-import { Nav, NavItem, NavLink } from 'reactstrap';
+import { Nav, Navbar, NavItem, NavLink, NavbarBrand } from "reactstrap";
 import "./style.css";
-function Navbar() {
+function TopNavbar() {
   return (
-    <Nav className=" navbar-expand-lg navbar-dark">
-      <NavLink className="navbar-brand" href="/">
-        React
-      </NavLink>
-      <NavItem>
-        <NavLink href="#" active>Link</NavLink>
-      </NavItem>
-    </Nav>
+    <Navbar expand="lg" dark={true}>
+      <NavbarBrand href="/">Harry Potter Web App</NavbarBrand>
+      {/* <Nav className="mr-auto" navbar>
+        <NavItem>
+          <NavLink href="/" active>
+            LogIn
+          </NavLink>
+        </NavItem>
+      </Nav> */}
+    </Navbar>
   );
 }
 
-export default Navbar;
+export default TopNavbar;
