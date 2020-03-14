@@ -37,6 +37,10 @@
   display: block;
   padding: 1rem 1rem;
   margin-bottom: -1px;
-  background-color: #fff;
+  background:rgba(0,0,0,1);
   border: 1px solid rgba(0,0,0,0.125);
+}
+
+.list-group-item:active {
+  background-color: #fff;
 }

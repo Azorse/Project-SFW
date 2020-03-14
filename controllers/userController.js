@@ -9,16 +9,22 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },  
-  create: function(req, res) {
-    console.log(req.body.pass)
-    const {firstName, lastName, email, password} = req.body
-    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-    const newUser = new User({firstName, lastName, email, password: hashedPassword})
+  // create: function(req, res) {
+  //   console.log(req.body.pass)
+  //   const {firstName, lastName, email, password} = req.body
+  //   const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
+  //   const newUser = new User({firstName, lastName, email, password: hashedPassword})
 
+  //   db.User
+  //     .save()
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => {res.status(422).json({message: "That email is already taken"})});
+  // },
+  create: function(req, res) {
     db.User
-      .save()
+      .create(req.body)
       .then(dbModel => res.json(dbModel))
-      .catch(err => {res.status(422).json({message: "That email is already taken"})});
+      .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
     db.User
