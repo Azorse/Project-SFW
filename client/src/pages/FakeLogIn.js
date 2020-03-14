@@ -19,9 +19,13 @@ class LogIn extends Component {
       {name: Ravenclaw, value: "Ravenclaw"},
       {name: Slytherin, value: "Slytherin"}
     ],
+    firstname: "",
+    secondname: "",
     username: "",
+    house: "",
     email: "",
-    house: ""
+    password: "",
+    id: ""
   };
 
   componentDidMount() {
@@ -75,10 +79,28 @@ class LogIn extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    const {firstname, secondname, username, email, password, house} = this.state
     console.log("submit works");
-    if (this.state.username && this.state.email && this.state.house) {
-      //Put code here
-    }
+    API.saveUser({
+      firstName: firstname,
+      lastName: secondname,
+      username: username,
+      houseName: house,
+      email: email,
+      password: password
+    })
+      .then(res => {
+        console.log(res)
+        this.setState({
+          id: res.data._id
+        })
+        // console.log(res.data)
+        // console.log(res.data._id)
+        // window.location.href = "/home/"+res.data._id;
+      })
+      .catch(err => console.log(err));
+
+    // window.location.href = "/home";
   };
 
   render() {
@@ -121,6 +143,9 @@ class LogIn extends Component {
                 name="password"
                 placeholder="Password (required)"
               />
+              <Link to= {{pathname: "/home", state: {id: this.state.id, house: this.state.house} }}>
+                Go to home
+              </Link>
               <FormBtn
                 disabled={
                   !(firstname && secondname && username && email && password && house)
@@ -139,8 +164,9 @@ class LogIn extends Component {
                 id={image.value}
                 width="200"
                 height="250"
+                // style={{background:"rgba(0,0,0,1)"}}
                 value={image.value}
-                onClick={e => this.checkImg(e, image.name)}></img>
+                onClick={e => {this.checkImg(e, image.name)}}></img>
             </ListItem>
           ))}
         </Row>
