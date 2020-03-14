@@ -20,7 +20,7 @@ module.exports = {
     db.User
       .create(newUser)
       .then(dbModel => res.json(dbModel))
-      .catch(err => {res.status(422).json({message: "That email is already taken"})});
+      .catch(err => res.status(422).json(err));
   },
   login: function(req, res, next) {
   passport.authenticate('local', {

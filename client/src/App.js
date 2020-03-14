@@ -17,7 +17,9 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path="/" component={LogIn} />
+          {/* <Route exact path="/" component={LogIn2} /> */}
           <Route exact path="/home" component={Home} />
+          {/* <Route exact path="/home/:id" component={Home} /> */}
           <Route exact path="/standings" component={Standings} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/lessons" component={Lessons} />

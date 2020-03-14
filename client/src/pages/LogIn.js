@@ -91,7 +91,8 @@ class LogIn extends Component {
           <Col size="md-4">
             <Jumbotron>
               {" "}
-              <img src="./images/hogwarts.png" alt="Hogwarts Crest" />
+              <img src="./images/hogwarts.png" width="250"
+                height="250" alt="Hogwarts Crest" />
               <h1>Log In</h1>{" "}
             </Jumbotron>
             <form onSubmit={this.handleFormSubmit}>
