@@ -6,6 +6,7 @@ import API from "../utils/API"
 import Nav from "../components/Nav"
 import Question from "../components/QuizForm"
 import questions from "../question.json"
+import { Jumbotron } from "../components/Jumbotron"
 
 class Quiz extends Component {
 
@@ -56,8 +57,10 @@ class Quiz extends Component {
 
   render() {
     const {id, house} = this.props.location.state
+
     return (
-   
+      <div>
+      <Jumbotron house={house} id={id}/>
       <form onSubmit={this.handleFormSubmit} style={{backgroundColor: "white"}}>
       {this.state.questions.map(question => (
         <div>
@@ -72,9 +75,9 @@ class Quiz extends Component {
         </div>
       ))}
        <button className="btn btn-default" type="submit">Save</button>
-       <h1>{house}</h1>
+        <h1>{id},{house}</h1>
       </form>
-      
+      </div>
     );
   }
 }
