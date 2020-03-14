@@ -19,22 +19,17 @@ class LogIn extends Component {
       { name: Ravenclaw, value: "Ravenclaw" },
       { name: Slytherin, value: "Slytherin" }
     ],
-    username: "",
     email: "",
-    house: ""
+    password: "",
+    house: "",
+    loggedIn: false,
+    user: null,
+    message: ""
   };
 
   componentDidMount() {
     // this.loadBooks();
   }
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
 
   checkImg = (e, value) => {
     console.log(value);
@@ -75,53 +70,55 @@ class LogIn extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("submit works");
-    if (this.state.username && this.state.email && this.state.house) {
-      //Put code here
+    if (this.state.email && this.state.password) {
+      console.log(`submitted`)
+      API.userLogin({
+        email:this.state.email,
+        password:this.state.password
+      })
+      .then(`.then ran`)
+      .catch(err => console.log(err))
     }
+
   };
 
   render() {
+
     return (
       <Container>
         <Row>
-          <Col size="md-12">
+          <Col size="md-4"></Col>
+          <Col size="md-4">
             <Jumbotron>
               {" "}
               <img src="./images/hogwarts.png" width="250"
                 height="250" alt="Hogwarts Crest" />
               <h1>Log In</h1>{" "}
             </Jumbotron>
-
-            <form>
+            <form onSubmit={this.handleFormSubmit}>
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
-                name="username"
-                placeholder="Username (required)"
+                name="email"
+                type="email"
+                placeholder="Email"
               />
               <Input
-                value={this.state.email}
+                value={this.state.password}
                 onChange={this.handleInputChange}
-                name="email"
-                placeholder="Email (required)"
+                name="password"
+                type="password"
+                placeholder="Password"
               />
-              {/* <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (Optional)"
-              /> */}
               <FormBtn
-                disabled={
-                  !(this.state.username && this.state.email && this.state.house)
-                }
-                onClick={this.handleFormSubmit}
+                type="submit"
+                disabled={!(this.state.email && this.state.password)}
               >
                 Submit
               </FormBtn>
             </form>
           </Col>
+          <Col size="md-4"></Col>
         </Row>
         <Row>
           {this.state.images.map(image => (

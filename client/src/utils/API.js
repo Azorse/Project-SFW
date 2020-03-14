@@ -15,8 +15,12 @@ const API = {
   // },
   // Saves a book to the database
   saveUser: function(userData) {
-    return axios.post("/api/users", userData);
+    return axios.post("/api/users/register", userData);
+  },
+  userLogin: function(userInfo) {
+    return axios.post("/api/users/login", userInfo)
   }
+
 };
 
 export default API;

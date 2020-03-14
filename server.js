@@ -4,27 +4,32 @@ const express = require('express')
 const session = require('express-session')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-const passport = require('./config')
+const passport = require('passport')
+const flash = require('connect-flash');
 const routes = require("./routes")
-
 
 const app = express();
 
+//Passport Config
+require('./passport/passport')(passport);
+
 //Middleware
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
-// app.use(
-//   session({
-//   secret: process.env.SECRET_KEY,
-//   store: new MongoStore({ mongooseConnection: dbConnection }),
-//   resave: false,
-//   saveUninitialized: false
-//   })
-// )
+app.use(
+  session({
+  secret: process.env.SECRET_KEY || "LGTM",
+  resave: false,
+  saveUninitialized: false
+  })
+)
 
 //Passport
 app.use(passport.initialize())
 app.use(passport.session())
+
+//Flash
+app.use(flash());
 
 //Routes
 app.use(routes)

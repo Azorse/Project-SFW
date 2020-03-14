@@ -39,8 +39,7 @@ class Home extends Component {
           "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
       }
     ],
-    username: "",
-    email: "",
+    firstName: "",
     house: "",
     houseImg: "",
     houseData: ""
@@ -60,15 +59,21 @@ class Home extends Component {
   }
 
 
-  // Will need modification after creating the database and api calls
-  loadUser = (house) => {  
+  loggedIn = () => {
+    API.isLoggedIn().then( user => {
+      if (user.data.loggedIn) {
+        this.setState({
+          user: user.data.user._id,
+          house: user.data.user.houseName,
+          loggedIn: true
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    });
+  }
 
-    // API.getUser("5e6d2bab892a9550bcef1a0a")
-    //   .then(res =>{
-    //     console.log(res)
-    //     this.setState({ username: res.data.username, house: res.data.house })
-    //   })
-    //   .catch(err => console.log(err));
+  loadUser = house => {
     let theHouse = house;
     let houseDesc = "";
     // const num = Math.floor(Math.random() * 4);
