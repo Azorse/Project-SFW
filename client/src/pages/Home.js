@@ -50,7 +50,7 @@ class Home extends Component {
     const {id, house} = this.props.location.state
     console.log(id)
     console.log(house)
-    API.getUser("5e6d2bab892a9550bcef1a0a")
+    API.getUser(id)
       .then(res =>{
         console.log(res)
         this.setState({ username: res.data.username, house: res.data.house })
@@ -121,13 +121,13 @@ class Home extends Component {
   // };
 
   render() {
-    const {id, house} = this.props.location.state
-    const { houseImg, houseData} = this.state;
+    const {id} = this.props.location.state
+    const { houseImg, houseData, house } = this.state;
     return (
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron house={house} image={houseImg} id={id}>
+            <Jumbotron id={id} house={house} image={houseImg}>
               {/* <h1>Hello {this.state.username}</h1> */}
               <h1> {house} </h1>
               <br></br>

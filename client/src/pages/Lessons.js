@@ -72,6 +72,7 @@ class LogIn extends Component {
   };
 
   render() {
+    const {id, house} = this.props.location.state
     return (
       <Container fluid>
         <Row>
@@ -79,6 +80,7 @@ class LogIn extends Component {
             <Jumbotron house={this.state.house} image={this.state.houseImg}>
               <h1>Harry Potter Lesson</h1>
             </Jumbotron>
+            <h1>Hello {id}{house}</h1>
           </Col>
         </Row>
         <Row>

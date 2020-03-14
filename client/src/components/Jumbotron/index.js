@@ -11,7 +11,7 @@ export function Jumbotron(props) {
         <img src={props.image} width="200" height="250" alt="House Crest" />{" "}
       </Row>
       <Row className="d-flex justify-content-between pb-3 text-center Button">
-        <Link to="/lessons">
+        <Link to={{pathname: "/lessons", state: {id: props.id, house: props.house} }}>
           <Button outline color="warning">
             Lessons
           </Button>{" "}
@@ -21,12 +21,12 @@ export function Jumbotron(props) {
             Quiz Page
           </Button>{" "}
         </Link>
-        <Link to="/scores">
+        <Link to={{pathname: "/scores", state: {id: props.id, house: props.house} }}>
           <Button outline color="warning">
             Scores
           </Button>{" "}
         </Link>
-        <Link to="/">
+        <Link to={{pathname: "/", state: {id: props.id, house: props.house} }}>
           <Button outline color="warning">
             User Profile
           </Button>{" "}
