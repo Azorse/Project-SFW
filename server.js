@@ -14,7 +14,7 @@ const app = express();
 require('./passport/passport')(passport);
 
 //Middleware
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use(
   session({
