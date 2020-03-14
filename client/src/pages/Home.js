@@ -60,7 +60,7 @@ class Home extends Component {
       if (user.data.loggedIn) {
         this.setState({
           user: user.data.user._id,
-          house: user.data.user.house,
+          house: user.data.user.houseName,
           loggedIn: true
         })
       }
