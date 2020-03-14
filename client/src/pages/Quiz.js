@@ -2,21 +2,13 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 import quizAPI from "../utils/quizAPI"
+import API from "../utils/API"
 import Nav from "../components/Nav"
 import Question from "../components/QuizForm"
 import questions from "../question.json"
-import e from "express";
 
 class Quiz extends Component {
 
-    // constructor(props){
-    //     super(props);
-    
-    //     this.state = {
-    //       values: {},
-    //       showValues: {}
-    //     }
-    //   }
     state = {
       questions,
       questionsArr: [],
@@ -25,15 +17,19 @@ class Quiz extends Component {
     
 
   handleOptionChange = (changeEvent) => {
-      this.setState(function(prevState){
-        return { 
+    const val = changeEvent.target
+    const value = parseInt(val.value)
+      // const prevState = {};
+      this.setState( prevState => (
+        {
         ...prevState,
         selectedOption: {
           ...prevState.selectedOption,
-          [changeEvent.target.id]: changeEvent.target.value
+          [val.id]: value
         }
       }
-    })
+      
+    ))
   }
 
   handleFormSubmit = (formSubmitEvent) => {
@@ -65,9 +61,9 @@ class Quiz extends Component {
       {this.state.questions.map(question => (
         <div>
         <h1 key={question.questionID}>{question.questionTitle}</h1>
-        {question.options.map(element => (
+        {question.options.map((element, i) => (
           <label id={`question-${question.questionID}-guess`}>
-          <input type="radio" id={question.questionID} value={element} name={`question-${question.questionID}-guess`} onClick={this.handleOptionChange} style={{marginLeft: "20px"}}/>
+          <input type="radio" id={question.questionID} value={parseInt(i)} name={`question-${question.questionID}-guess`} onClick={this.handleOptionChange} style={{marginLeft: "20px"}}/>
           {element}  
           </label>
         ))}
