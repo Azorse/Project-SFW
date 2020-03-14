@@ -42,20 +42,14 @@ class Home extends Component {
     firstName: "",
     house: "",
     houseImg: "",
-    houseData: ""
+    houseData: "",
+    loggedIn: false,
+    user: null,
   };
 
   componentDidMount() {
-    const {id, house} = this.props.location.state
-    console.log(id)
-    console.log(house)
-    API.getUser(id)
-      .then(res =>{
-        console.log(res)
-        this.setState({ username: res.data.username, house: res.data.house })
-      })
-      .catch(err => console.log(err));
-    this.loadUser(house)
+    this.loggedIn();
+    this.loadUser();
   }
 
 
@@ -76,13 +70,6 @@ class Home extends Component {
   loadUser = house => {
     let theHouse = house;
     let houseDesc = "";
-    // const num = Math.floor(Math.random() * 4);
-    // let theHouse = this.state.images[num].value;
-    // let houseDesc = "";
-    // console.log(num);
-    // console.log(theHouse);
-    // this.setState({ house: theHouse });
-    // this.setState({ username: "Bob", house: theHouse})
 
     switch (theHouse) {
       case this.state.images[0].value:
@@ -104,26 +91,6 @@ class Home extends Component {
     }
     this.setState({ houseImg: theHouse, houseData: houseDesc });
   };
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     const {id} = this.props.location.state
