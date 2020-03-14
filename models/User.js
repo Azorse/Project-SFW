@@ -13,7 +13,7 @@ const UserSchema = new Schema({
     },
     houseName: {
       type: String,
-      required: false
+      required: true
     },
     lessonData: {
       type: Number,

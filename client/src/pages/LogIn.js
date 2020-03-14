@@ -76,7 +76,23 @@ class LogIn extends Component {
         email:this.state.email,
         password:this.state.password
       })
-      .then(`.then ran`)
+      .then(user => {
+        console.log(user);
+        if (user.data.loggedIn) {
+          console.log(user.data)
+          this.setState({
+            loggedIn: true,
+            user: user.data.user._id
+          });
+          console.log("log in successful");
+          window.location.href = '/home';
+        }
+        else if (user.data.message) {
+          this.setState({
+            message: user.data.message
+          })
+        }
+      })
       .catch(err => console.log(err))
     }
 
@@ -95,6 +111,7 @@ class LogIn extends Component {
               <h1>Log In</h1>{" "}
             </Jumbotron>
             <form onSubmit={this.handleFormSubmit}>
+            
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}

@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import LogIn from "./LogIn";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
+
 
 class Home extends Component {
   state = {
@@ -42,27 +44,35 @@ class Home extends Component {
     firstName: "",
     house: "",
     houseImg: "",
-    houseData: ""
+    houseData: "",
+    loggedIn: false,
+    user: null,
   };
 
   componentDidMount() {
+    this.loggedIn();
     this.loadUser();
   }
 
-  // Will need modification after creating the database and api calls
-  loadUser = id => {
-    // API.getUser(id)
-    //   .then(res =>
-    //     this.setState({ username: res.data.username, house: res.data.house })
-    //   )
-    //   .catch(err => console.log(err));
-    const num = Math.floor(Math.random() * 4);
-    let theHouse = this.state.images[num].value;
+
+  loggedIn = () => {
+    API.isLoggedIn().then( user => {
+      if (user.data.loggedIn) {
+        this.setState({
+          user: user.data.user._id,
+          house: user.data.user.house,
+          loggedIn: true
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    });
+  }
+
+  loadUser = house => {
+    let theHouse = house;
     let houseDesc = "";
-    console.log(num);
-    console.log(theHouse);
-    this.setState({ house: theHouse });
-    // this.setState({ username: "Bob", house: theHouse})
+
     switch (theHouse) {
       case this.state.images[0].value:
         theHouse = this.state.images[0].name;
@@ -83,26 +93,6 @@ class Home extends Component {
     }
     this.setState({ houseImg: theHouse, houseData: houseDesc });
   };
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     const { houseImg, houseData, house } = this.state;
