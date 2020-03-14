@@ -50,7 +50,7 @@ class Home extends Component {
     const {id, house} = this.props.location.state
     console.log(id)
     console.log(house)
-    API.getUser("5e6d2bab892a9550bcef1a0a")
+    API.getUser(id)
       .then(res =>{
         console.log(res)
         this.setState({ username: res.data.username, house: res.data.house })

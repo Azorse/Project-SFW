@@ -17,7 +17,7 @@ class Chart extends Component {
   componentDidMount() {
      const questionGraph = [
       {
-        "correctlyAnswered": [10, 2, 3, 3]
+        "correctlyAnswered": [11, 2, 3, 3]
       },
       {
         "correctlyAnswered": [2, 2, 3, 3]

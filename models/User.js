@@ -22,6 +22,9 @@ const UserSchema = new Schema({
     lessonData: {
       type: Number,
     },
+    quizData: {
+      type: Number,
+    },
     email: {
         type: String,
         required: true,
