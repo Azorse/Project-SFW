@@ -121,12 +121,13 @@ class Home extends Component {
   // };
 
   render() {
-    const { houseImg, houseData, house } = this.state;
+    const {id, house} = this.props.location.state
+    const { houseImg, houseData} = this.state;
     return (
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron house={house} image={houseImg}>
+            <Jumbotron house={house} image={houseImg} id={id}>
               {/* <h1>Hello {this.state.username}</h1> */}
               <h1> {house} </h1>
               <br></br>

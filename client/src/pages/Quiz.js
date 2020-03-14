@@ -33,6 +33,8 @@ class Quiz extends Component {
   }
 
   handleFormSubmit = (formSubmitEvent) => {
+    const {id, house} = this.props.location.state
+    console.log(house)
     formSubmitEvent.preventDefault();
     // quizAPI.saveQuiz(this.state.selectedOption)
     // .then(console.log("saved answers"))
@@ -40,7 +42,8 @@ class Quiz extends Component {
     console.log('You have selected:', this.state.selectedOption);
     let n = [];
     for (var i = 0; i < this.state.selectedOption.length; i++){
-        if(this.state.selectedOption[i] == this.state.questions[i].correctAnswer){
+        if(this.state.selectedOption[i].value == this.state.questions[i].correctAnswer){
+          console.log(this.state.selectedOption[i])
         console.log("yea that's the right answer")
         n[i] = 1
       }
@@ -49,14 +52,12 @@ class Quiz extends Component {
         n[i] = 0
       }
     }
-    this.setState({selectedOption: n})
-    n.forEach(el =>  {
-      
-    })
   }
 
   render() {
+    const {id, house} = this.props.location.state
     return (
+   
       <form onSubmit={this.handleFormSubmit} style={{backgroundColor: "white"}}>
       {this.state.questions.map(question => (
         <div>
@@ -71,6 +72,7 @@ class Quiz extends Component {
         </div>
       ))}
        <button className="btn btn-default" type="submit">Save</button>
+       <h1>{house}</h1>
       </form>
       
     );
