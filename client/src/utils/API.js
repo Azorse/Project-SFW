@@ -13,6 +13,10 @@ const API = {
   // deleteUser: function(id) {
   //   return axios.delete("/api/books/" + id);
   // },
+
+  isLoggedIn: function() {
+    return axios.get("/api/users/home");
+  },
   // Saves a book to the database
   saveUser: function(userData) {
     return axios.post("/api/users/register", userData);

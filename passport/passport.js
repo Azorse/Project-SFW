@@ -1,6 +1,12 @@
-const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
+const jwtSecret = require('./jwtConfig');
+const LocalStrategy = require('passport-local').Strategy;
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
+
 const User = require('../models/User');
+
 
 module.exports = function(passport) {
   passport.use(
@@ -34,5 +40,4 @@ module.exports = function(passport) {
     });
   });
 };
-
 
