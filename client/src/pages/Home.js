@@ -99,7 +99,7 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron id={id} house={house} image={houseImg}>
+            <Jumbotron house={house} image={houseImg}>
               {/* <h1>Hello {this.state.username}</h1> */}
               <h1> {house} </h1>
               <br></br>
