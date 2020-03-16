@@ -93,7 +93,7 @@ class Home extends Component {
   };
 
   render() {
-    const {id} = this.props.location.state
+    // const {id} = this.props.location.state
     const { houseImg, houseData, house } = this.state;
     return (
       <Container fluid>
