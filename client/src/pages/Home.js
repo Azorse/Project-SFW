@@ -39,45 +39,37 @@ class Home extends Component {
           "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
       }
     ],
-    username: "",
-    email: "",
+    firstName: "",
     house: "",
     houseImg: "",
-    houseData: ""
+    houseData: "",
+    loggedIn: false,
+    user: null,
   };
 
   componentDidMount() {
-    const {id, house} = this.props.location.state
-    console.log(id)
-    console.log(house)
-    API.getUser(id)
-      .then(res =>{
-        console.log(res)
-        this.setState({ username: res.data.username, house: res.data.house })
-      })
-      .catch(err => console.log(err));
-    this.loadUser(house)
+    this.loggedIn();
+    this.loadUser();
   }
 
 
-  // Will need modification after creating the database and api calls
-  loadUser = (house) => {  
+  loggedIn = () => {
+    API.isLoggedIn().then( user => {
+      if (user.data.loggedIn) {
+        this.setState({
+          user: user.data.user._id,
+          house: user.data.user.houseName,
+          loggedIn: true
+        })
+      }
+    }).catch(err => {
+      console.log(err)
+    });
+  }
 
-    // API.getUser("5e6d2bab892a9550bcef1a0a")
-    //   .then(res =>{
-    //     console.log(res)
-    //     this.setState({ username: res.data.username, house: res.data.house })
-    //   })
-    //   .catch(err => console.log(err));
+  loadUser = house => {
     let theHouse = house;
     let houseDesc = "";
-    // const num = Math.floor(Math.random() * 4);
-    // let theHouse = this.state.images[num].value;
-    // let houseDesc = "";
-    // console.log(num);
-    // console.log(theHouse);
-    // this.setState({ house: theHouse });
-    // this.setState({ username: "Bob", house: theHouse})
 
     switch (theHouse) {
       case this.state.images[0].value:
@@ -99,26 +91,6 @@ class Home extends Component {
     }
     this.setState({ houseImg: theHouse, houseData: houseDesc });
   };
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
 
   render() {
     const {id, house} = this.props.location.state
