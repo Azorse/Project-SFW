@@ -10,7 +10,7 @@ module.exports = {
   },  
   create: function(req, res) {
     console.log(req.body)
-    xsdb.Quiz
+    db.Quiz
       .then(dbModel => res.json(dbModel))
       .catch(err => {res.status(422).json({message: "idk"})});
   },
