@@ -4,7 +4,7 @@ const auth = {
     if (req.isAuthenticated()) {
       next();
     } else {
-      res.redirect('CREATE A ROUTE HERE')
+      res.status(401)
     }
   }
 }

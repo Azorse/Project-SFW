@@ -4,6 +4,7 @@ import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import { Redirect } from "react-router";
 import API from "../utils/API.js";
 import { Link } from "react-router-dom";
+import { Alert } from "reactstrap";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
@@ -25,6 +26,7 @@ class Register extends Component {
     email: "",
     password: "",
     house: "",
+    message: "",
     redirect: false
   };
   checkImg = (e, value) => {
@@ -80,8 +82,9 @@ class Register extends Component {
         password: this.state.password,
         houseName: this.state.house
       })
+
         .then(() => this.setState({ redirect: true }))
-        .catch(err => console.log(err));
+        .catch(err => {this.setState({message: "That email has already taken."})});
     }
   };
 
@@ -90,7 +93,10 @@ class Register extends Component {
 
     if (redirect) {
       return <Redirect to="/" />;
-    }
+    } 
+    // else {
+    //   other component
+    // }
 
     return (
       <Container fluid>
@@ -101,6 +107,12 @@ class Register extends Component {
               <h1>Register</h1>
             </Jumbotron>
             <form onSubmit={this.handleFormSubmit}>
+              <hr />
+              {this.state.message ? (
+                <Alert className="animated fadeIn" color="danger">
+                  {this.state.message}
+                </Alert>
+              ) : (<></>)}
               <Input
                 value={this.state.firstName}
                 onChange={this.handleInputChange}
@@ -134,7 +146,7 @@ class Register extends Component {
                     this.state.firstName &&
                     this.state.lastName &&
                     this.state.email &&
-                    this.state.password && 
+                    this.state.password &&
                     this.state.house
                   )
                 }
@@ -142,10 +154,10 @@ class Register extends Component {
                 Sign Up
               </FormBtn>
             </form>
-         </Col>
-        <Col size="md-4"></Col>
-      </Row>
-      <Row>
+          </Col>
+          <Col size="md-4"></Col>
+        </Row>
+        <Row>
           {this.state.images.map(image => (
             <ListItem>
               <img
@@ -154,12 +166,13 @@ class Register extends Component {
                 width="200"
                 height="250"
                 value={image.value}
-                onClick={e => this.checkImg(e, image.name)}></img>
+                onClick={e => this.checkImg(e, image.name)}
+              ></img>
             </ListItem>
           ))}
         </Row>
-    </Container>
-  );
+      </Container>
+    );
 }
 }
 
