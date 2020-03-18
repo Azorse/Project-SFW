@@ -3,6 +3,7 @@ import DeleteBtn from "../components/Button";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import { Alert } from "reactstrap";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
@@ -24,7 +25,8 @@ class LogIn extends Component {
     house: "",
     loggedIn: false,
     user: null,
-    message: ""
+    message: "",
+    error: ""
   };
 
   componentDidMount() {
@@ -71,18 +73,15 @@ class LogIn extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.email && this.state.password) {
-      console.log(`submitted`)
       API.userLogin({
         email:this.state.email,
         password:this.state.password
       })
       .then(user => {
-        console.log(user);
-        if (user.data.loggedIn) {
-          console.log(user.data)
+        if (user.data._id) {
           this.setState({
             loggedIn: true,
-            user: user.data.user._id
+            user: user.data._id
           });
           console.log("log in successful");
           window.location.href = '/home';
@@ -93,10 +92,9 @@ class LogIn extends Component {
           })
         }
       })
-      .catch(err => console.log(err))
-    }
-
-  };
+      .catch(err => console.log(err));
+    };
+  }
 
   render() {
 
@@ -112,6 +110,12 @@ class LogIn extends Component {
               <h1>Log In</h1>{" "}
             </Jumbotron>
             <form onSubmit={this.handleFormSubmit}>
+              <hr />
+              {this.state.message && (
+                <Alert className="animated fadeIn" color="danger">
+                  {this.state.message}
+                </Alert>
+              )}
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}

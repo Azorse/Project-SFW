@@ -13,22 +13,22 @@ module.exports = {
   },  
   create: function(req, res) {
     console.log(req.body)
-    const {firstName, lastName, email, password} = req.body
+    const {firstName, lastName, email, password, houseName} = req.body
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
-    let newUser = {firstName, lastName, email, password: hashedPassword}
+    let newUser = {firstName, lastName, email, password: hashedPassword, houseName}
     console.log(newUser)
     db.User
       .create(newUser)
       .then(dbModel => res.json(dbModel))
-      .catch(err => {res.status(422).json({message: "That email is already taken"})});
+      .catch(err => {res.status(422).send({message: "That email is already taken"})});
   },
-  login: function(req, res, next) {
-  passport.authenticate('local', {
-    successRedirect: '/home',
-    failureRedirect: '/',
-    failureFlash: true
-  })(req, res, next);
-  },
+  // login: function(req, res, next) {
+  // passport.authenticate('local', {
+  //   successRedirect: '/home',
+  //   failureRedirect: '/',
+  //   failureFlash: true
+  // });
+  // },
   update: function(req, res) {
     db.User
       .findOneAndUpdate({ _id: req.params.id }, req.body)

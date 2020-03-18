@@ -49,7 +49,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.loggedIn();
-    this.loadUser();
+    
   }
 
 
@@ -58,9 +58,11 @@ class Home extends Component {
       if (user.data.loggedIn) {
         this.setState({
           user: user.data.user._id,
+          firstName: user.data.user.firstName,
           house: user.data.user.houseName,
           loggedIn: true
         })
+        this.loadUser(user.data.user.houseName)
       }
     }).catch(err => {
       console.log(err)
@@ -70,6 +72,7 @@ class Home extends Component {
   loadUser = house => {
     let theHouse = house;
     let houseDesc = "";
+    console.log(house)
 
     switch (theHouse) {
       case this.state.images[0].value:
@@ -100,8 +103,8 @@ class Home extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron house={house} image={houseImg}>
-              {/* <h1>Hello {this.state.username}</h1> */}
-              <h1> {house} </h1>
+              <h1>Hello {this.state.firstName}</h1>
+              {/* <h1> {house} </h1> */}
               <br></br>
               <Row>
                 <Col size="md-3">
