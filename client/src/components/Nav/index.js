@@ -2,14 +2,20 @@ import React from "react";
 import { Nav, Navbar, NavItem, NavLink, NavbarBrand } from "reactstrap";
 import "./style.css";
 function TopNavbar() {
+
   return (
-    <Navbar expand="lg" dark={true}>
-      <NavbarBrand href="/">Harry Potter Web App</NavbarBrand>
-      <Nav className="float-right" navbar>
+    <Navbar dark={true} >
+      <Nav className="row">
         <NavItem>
-          <NavLink href="/" active>
-            LogOut
-          </NavLink>
+          <NavLink href="/home">Harry Potter Web App</NavLink>
+        </NavItem>
+      </ Nav>
+      <Nav className="justify-content-end">
+        <NavItem>
+          <NavLink href="/test">Welcome</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="/">LogOut</NavLink>
         </NavItem>
       </Nav>
     </Navbar>

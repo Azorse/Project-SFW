@@ -6,7 +6,7 @@ import API from "../utils/API"
 import Nav from "../components/Nav"
 import Question from "../components/QuizForm"
 import questions from "../question.json"
-import Nav from "../components/Nav";
+
 
 class Quiz extends Component {
 
