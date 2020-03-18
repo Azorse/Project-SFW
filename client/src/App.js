@@ -5,7 +5,7 @@ import LogIn2 from "./pages/FakeLogIn";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+
 import Standings from "./pages/Standings";
 import Lessons from "./pages/Lessons";
 import Quiz from "./pages/Quiz";
@@ -14,7 +14,6 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
         <Switch>
           <Route exact path="/" component={LogIn} />
           {/* <Route exact path="/" component={LogIn2} /> */}

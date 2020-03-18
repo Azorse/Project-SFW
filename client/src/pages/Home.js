@@ -10,6 +10,7 @@ import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
+import Nav from "../components/Nav";
 
 class Home extends Component {
   state = {
@@ -100,6 +101,7 @@ class Home extends Component {
     const { houseImg, houseData, house } = this.state;
     return (
       <Container fluid>
+      <Nav />
         <Row>
           <Col size="md-12">
             <Jumbotron house={house} image={houseImg}>
