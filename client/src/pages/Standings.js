@@ -13,7 +13,8 @@ class Chart extends Component {
       chartData: [],
       data: [],
       questions,
-
+      houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+      questionIds: []
     };
   }
 
@@ -23,7 +24,12 @@ class Chart extends Component {
     const gryffinOneRight = 0 
     const ravenRight = 0
     const slytherRight= 0
+    const ids = []
+    this.state.questions.forEach(el => {
+      ids.push(el.questionID)
 
+      this.setState({questionIds: this.state.questionIds.concat(ids)})})
+  
     //Get Gryffindor
      quizAPI.getGryff()
      .then(res => {
@@ -52,6 +58,16 @@ class Chart extends Component {
     })
     .catch(err => console.log(err))
 
+    quizAPI.getRaven()
+    .then(res => {
+      res.data.forEach(el => {
+        console.log(el)
+
+      })
+    })
+    .catch(err => console.log(err))
+
+
     // axios
     //   .get(
     //     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=2&page=1&sparkline=true"
@@ -60,15 +76,15 @@ class Chart extends Component {
         // const x = res.data;
         const x = questions;
         let chartData = [];
-        x.forEach(element => {
+        this.state.houses.forEach(element => {
           chartData.push({
-            labels: ["Griffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
+            labels: [1],
             datasets: [{ data: [10, 35, 341, 45],
                         backgroundColor: ["rgba(139, 23, 23, 0.5)",
                                           "rgba(32, 103, 29, 0.5)",
                                           "rgba(11, 37, 141, 0.5)",
                                           "rgba(202, 183, 6, 0.5)"],
-                        label:["Griffindor"]
+                        label:element
                                         }]
           });
         });
@@ -77,6 +93,7 @@ class Chart extends Component {
      }
 
   render() {
+    console.log(this.state.questionIds)
     return (
       <div className="chart">
         {this.state.chartData.map((n, index) => {

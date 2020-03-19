@@ -13,9 +13,30 @@ class Quiz extends Component {
       questions,
       questionsArr: [],
       selectedOption: {},
-      house: "Slytherin"
+      house: ""
     }
+
+  componentDidMount() {
+    this.loggedIn();
     
+  }
+
+
+  loggedIn = () => {
+    API.isLoggedIn().then( user => {
+      if (user.data.loggedIn) {
+        this.setState({
+          user: user.data.user._id,
+          firstName: user.data.user.firstName,
+          house: user.data.user.houseName,
+          loggedIn: true
+        })
+        this.loadUser(user.data.user.houseName)
+      }
+    }).catch(err => {
+      console.log(err)
+    });
+  }
 
   handleOptionChange = (changeEvent) => {
     const val = changeEvent.target
@@ -42,7 +63,7 @@ class Quiz extends Component {
     // .then(console.log("saved answers"))
     console.log(this.state.selectedOption)
     console.log('You have selected:', this.state.questions[1].questionID);
-    let n = {};
+    let n = [];
     for(var i = 0; i < this.state.questions.length; i++){
       // for(var el in this.state.selectedOption){
         // console.log(this.state.selectedOption[el])
@@ -60,8 +81,19 @@ class Quiz extends Component {
     }
 
     quizAPI.saveQuiz({
-      answers: n,
-      houseName: API.isLoggedIn().then(user => user.data.user.houseName)
+      questions: [{
+        questionOne: this.state.selectedOption[0],
+        questionTwo: this.state.selectedOption[1],
+        questionThree: this.state.selectedOption[2],
+        questionFour: this.state.selectedOption[3],
+        questionFive: this.state.selectedOption[4],
+        questionSix: this.state.selectedOption[5],
+        questionSeven: this.state.selectedOption[6],
+        questionEight: this.state.selectedOption[7],
+        questionNine: this.state.selectedOption[8],
+        question10: this.state.selectedOption[9]
+      }],
+      houseName: this.state.house
     })
     .then(res => console.log(res))
     .catch(err => console.log(err))
