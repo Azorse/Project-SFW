@@ -10,7 +10,7 @@ import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
-import Hogwarts from "../components/Images/hogwartsSmall.png";
+// import Hogwarts from "../components/Images/hogwartsSmall.png";
 
 class Register extends Component {
   state = {
@@ -19,7 +19,7 @@ class Register extends Component {
       {name: Hufflepuff, value: "Hufflepuff"},
       {name: Ravenclaw, value: "Ravenclaw"},
       {name: Slytherin, value: "Slytherin"},
-      {name: Hogwarts, value: "Hogwarts"}
+      // {name: Hogwarts, value: "Hogwarts"}
     ],
     firstName: "",
     lastName: "",
