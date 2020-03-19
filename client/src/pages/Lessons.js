@@ -79,7 +79,7 @@ class LogIn extends Component {
       <Nav />
         <Row>
           <Col size="md-12">
-            <Jumbotron house={this.state.house} image={this.state.houseImg}>
+            <Jumbotron house={house} image={this.state.houseImg} id={id}>
               <h1>Harry Potter Lesson</h1>
             </Jumbotron>
             <h1>Hello {id}{house}</h1>
