@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
 
 app.use(
   session({
-  secret: process.env.SECRET_KEY || "LGTM",
+  secret: process.env.SECRET_KEY,
   resave: false,
   saveUninitialized: false
   })
@@ -47,5 +47,5 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sfw")
     .catch(err => console.log(err));
 
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Server started on port ${port}`));

@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/Button";
 import { Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { ListItem } from "../components/List";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
+import Hogwarts from "../components/Images/hogwartsSmall.png";
 import Nav from "../components/Nav";
 
 class Home extends Component {
@@ -38,6 +37,12 @@ class Home extends Component {
         value: "Slytherin",
         data:
           "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
+      },
+      {
+        name: Hogwarts,
+        value: "Hogwarts",
+        data:
+          "You have yet to be sorted"
       }
     ],
     firstName: "",
@@ -92,6 +97,9 @@ class Home extends Component {
         theHouse = this.state.images[3].name;
         houseDesc = this.state.images[3].data;
         break;
+      default:
+        theHouse = this.state.images[4].name;
+        houseDesc = this.state.images[4].data;
     }
     this.setState({ houseImg: theHouse, houseData: houseDesc });
   };
@@ -142,7 +150,7 @@ class Home extends Component {
           </Col>
         </Row>
         <Row>
-          <img src={houseImg} width="200" height="250" className="center"></img>          
+          <img src={houseImg} alt="house crest" width="200" height="250" className="center"></img>          
           <style>
             {"\
             .center{\

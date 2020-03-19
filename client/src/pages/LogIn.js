@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/Button";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Alert } from "reactstrap";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { ListItem } from "../components/List";
+import { Input, FormBtn } from "../components/Form";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
+import Hogwarts from "../components/Images/hogwartsSmall.png";
+
 
 class LogIn extends Component {
   state = {
@@ -18,7 +18,8 @@ class LogIn extends Component {
       { name: Gryffindor, value: "Gryffindor" },
       { name: Hufflepuff, value: "Hufflepuff" },
       { name: Ravenclaw, value: "Ravenclaw" },
-      { name: Slytherin, value: "Slytherin" }
+      { name: Slytherin, value: "Slytherin" },
+      { name: Hogwarts, value: "Hogwarts"}
     ],
     email: "",
     password: "",
@@ -60,6 +61,11 @@ class LogIn extends Component {
           house: "slytherin"
         });
         break;
+      default:
+        console.log("nothing was chosen");
+        this.setState({
+          house: "hogwarts"
+        });
     }
   };
 
@@ -144,6 +150,7 @@ class LogIn extends Component {
           {this.state.images.map(image => (
             <ListItem>
               <img
+                alt="house crest"
                 src={image.name}
                 id={image.value}
                 width="200"
