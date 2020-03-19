@@ -23,6 +23,9 @@ const API = {
   },
   userLogin: function(userInfo) {
     return axios.post("/api/users/login", userInfo)
+  },
+  userLogout: function() {
+    return axios.get("/api/users/logout")
   }
 
 };
