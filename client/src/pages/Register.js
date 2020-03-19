@@ -35,25 +35,25 @@ class Register extends Component {
       case Gryffindor:
         console.log("chose the good boys");
         this.setState({
-          house: "gryffindor"
+          house: "Gryffindor"
         });
         break;
       case Hufflepuff:
         console.log("chose the boring boys");
         this.setState({
-          house: "hufflepuff"
+          house: "Hufflepuff"
         });
         break;
       case Ravenclaw:
         console.log("chose the nerdy boys");
         this.setState({
-          house: "ravenclaw"
+          house: "Ravenclaw"
         });
         break;
       case Slytherin:
         console.log("chose the cool boys");
         this.setState({
-          house: "slytherin"
+          house: "Slytherin"
         });
         break;
       default:
