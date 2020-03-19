@@ -7,18 +7,19 @@ import Nav from "../components/Nav"
 import Question from "../components/QuizForm"
 import questions from "../question.json"
 
-
 class Quiz extends Component {
 
     state = {
       questions,
       questionsArr: [],
-      selectedOption: {}
+      selectedOption: {},
+      house: "Slytherin"
     }
     
 
   handleOptionChange = (changeEvent) => {
     const val = changeEvent.target
+    const ho = this.state.house
     const value = parseInt(val.value)
       // const prevState = {};
       this.setState( prevState => (
@@ -34,31 +35,55 @@ class Quiz extends Component {
   }
 
   handleFormSubmit = (formSubmitEvent) => {
-    const {id, house} = this.props.location.state
-    console.log(house)
+    // const {id, house} = this.props.location.state
+    // console.log(house)
     formSubmitEvent.preventDefault();
     // quizAPI.saveQuiz(this.state.selectedOption)
     // .then(console.log("saved answers"))
     console.log(this.state.selectedOption)
-    console.log('You have selected:', this.state.selectedOption);
-    let n = [];
-    for (var i = 0; i < this.state.selectedOption.length; i++){
-        if(this.state.selectedOption[i].value == this.state.questions[i].correctAnswer){
-          console.log(this.state.selectedOption[i])
-        console.log("yea that's the right answer")
-        n[i] = 1
-      }
-      else{
-        console.log("wrong answer")
-        n[i] = 0
-      }
+    console.log('You have selected:', this.state.questions[1].questionID);
+    let n = {};
+    for(var i = 0; i < this.state.questions.length; i++){
+      // for(var el in this.state.selectedOption){
+        // console.log(this.state.selectedOption[el])
+        // console.log(el)
+        console.log(this.state.selectedOption[i])
+        if(this.state.selectedOption[i] == this.state.questions[i].correctAnswer){
+          console.log("Correct")
+          n[i] = 1
+        }
+        else{
+          console.log("wrong")
+          n[i] = 0
+        }
+      // }
     }
+
+    quizAPI.saveQuiz({
+      answers: n,
+      houseName: API.isLoggedIn().then(user => user.data.user.houseName)
+    })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+      
+    // for (var i = 0; i < this.state.selectedOption.length; i++){
+    //     if(this.state.selectedOption[i].value == this.state.questions[i].correctAnswer){
+    //       console.log(this.state.selectedOption[i])
+    //     console.log("yea that's the right answer")
+    //     // n[i] = 1
+    //   }
+    //   else{
+    //     console.log("wrong answer")
+    //     // n[i] = 0
+    //   }
+    // }
   }
 
   render() {
-    const {id, house} = this.props.location.state
+    // const {id, house} = this.props.location.state
     return (
-   
+      <div>
+      <h1>{this.state.house}</h1>
       <form onSubmit={this.handleFormSubmit} style={{backgroundColor: "white"}}>
       {this.state.questions.map(question => (
         <div>
@@ -73,12 +98,11 @@ class Quiz extends Component {
         </div>
       ))}
        <button className="btn btn-default" type="submit">Save</button>
-       <h1>{house}</h1>
+       {/* <h1>{house}</h1> */}
       </form>
-      
+      </div>
     );
   }
 }
 
 export default Quiz;
-
