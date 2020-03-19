@@ -14,21 +14,20 @@ class Chart extends Component {
       data: [],
       questions,
       houses: ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"],
-      questionIds: []
+      gryffinRight: [],
+      ravenRight: [],
+      slytherRight: [],
+      huffleRight: []
     };
   }
 
 
 
   componentDidMount() {
-    const gryffinOneRight = 0 
-    const ravenRight = 0
-    const slytherRight= 0
+    const gryffinRight= []
+    const ravenRight = []
+    const slytherRight= []
     const ids = []
-    this.state.questions.forEach(el => {
-      ids.push(el.questionID)
-
-      this.setState({questionIds: this.state.questionIds.concat(ids)})})
   
     //Get Gryffindor
      quizAPI.getGryff()
@@ -60,10 +59,40 @@ class Chart extends Component {
 
     quizAPI.getRaven()
     .then(res => {
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       res.data.forEach(el => {
-        console.log(el)
-
+        el.questions.map(ele => {
+          // ravenRight.push(ele)
+          console.log(ele)
+          
+          for(var j = 1; j < Object.values(ele).length; j++){
+            console.log(Object.values(ele)[j])
+            x[j] += Object.values(ele)[j]
+          }
+          console.log(x)
+          // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
+        })
+        console.log(x)
       })
+      chartData.push(
+        {
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        datasets: [{ data: x,
+                    backgroundColor: ["rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                      "rgba(11, 37, 141, 0.5)",
+                                    ],
+                    label:"Gryffindor"
+                                    }]
+      })
+      this.setState({ chartData });
     })
     .catch(err => console.log(err))
 
@@ -74,26 +103,57 @@ class Chart extends Component {
     //   )
     //   .then(res => {
         // const x = res.data;
-        const x = questions;
+        // const x = questions;
         let chartData = [];
-        this.state.houses.forEach(element => {
-          chartData.push({
-            labels: [1],
-            datasets: [{ data: [10, 35, 341, 45],
-                        backgroundColor: ["rgba(139, 23, 23, 0.5)",
-                                          "rgba(32, 103, 29, 0.5)",
-                                          "rgba(11, 37, 141, 0.5)",
-                                          "rgba(202, 183, 6, 0.5)"],
-                        label:element
-                                        }]
-          });
-        });
-        this.setState({ chartData });
+        // this.state.houses.forEach(element => {
+        //   chartData.push(
+        //     {
+        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        //     datasets: [{ data:[10, 15, 15, 5],
+        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
+        //                                   "rgba(32, 103, 29, 0.5)",
+        //                                   "rgba(11, 37, 141, 0.5)",
+        //                                   "rgba(202, 183, 6, 0.5)"],
+        //                 label:"Gryffindor"
+        //                                 }]
+        //   },
+        //   {
+        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        //     datasets: [{ data:[10, 15, 15, 5],
+        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
+        //                                   "rgba(32, 103, 29, 0.5)",
+        //                                   "rgba(11, 37, 141, 0.5)",
+        //                                   "rgba(202, 183, 6, 0.5)"],
+        //                 label:"Slytherin"
+        //                                 }]
+        //   },
+        //   {
+        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        //     datasets: [{ data:[10, 15, 15, 5],
+        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
+        //                                   "rgba(32, 103, 29, 0.5)",
+        //                                   "rgba(11, 37, 141, 0.5)",
+        //                                   "rgba(202, 183, 6, 0.5)"],
+        //                 label:"Ravenclaw"
+        //                                 }]
+        //   },
+        //   {
+        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        //     datasets: [{ data:[10, 15, 15, 5],
+        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
+        //                                   "rgba(32, 103, 29, 0.5)",
+        //                                   "rgba(11, 37, 141, 0.5)",
+        //                                   "rgba(202, 183, 6, 0.5)"],
+        //                 label:"Hufflepuff"
+        //                                 }]
+        //   },
+        //   );
+        // // });
+        // this.setState({ chartData });
       // });
      }
 
   render() {
-    console.log(this.state.questionIds)
     return (
       <div className="chart">
         {this.state.chartData.map((n, index) => {
