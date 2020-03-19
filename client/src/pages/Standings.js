@@ -32,30 +32,64 @@ class Chart extends Component {
     //Get Gryffindor
      quizAPI.getGryff()
      .then(res => {
-      //  console.log(res.data)
-       res.data.forEach(el => {
-         Object.keys(el).map(function(key) {
-           console.log([String(key), el[key]])
-         })
-        // var sum = 0
-        // console.log(sum)
-       })
-     })
-     .catch(err => console.log(err))
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      res.data.forEach(el => {
+        el.questions.map(ele => {
+          // ravenRight.push(ele)
+          console.log(ele)
+          
+          for(var j = 1; j < Object.values(ele).length; j++){
+            console.log(Object.values(ele)[j])
+            x[j] += Object.values(ele)[j]
+          }
+          console.log(x)
+          // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
+        })
+        console.log(x)
+      })
+      chartData.push(
+        {
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        datasets: [{ data: x,
+                    backgroundColor: "rgba(139, 23, 23, 0.5)",
+                    label:"Gryffindor"
+                                    }]
+      })
+      this.setState({ chartData });
+    })
+    .catch(err => console.log(err))
+
 
     //Get Slytherin
     quizAPI.getSlyth()
     .then(res => {
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       res.data.forEach(el => {
-        console.log(el)
-       //  if(el.houseName == "Gryffindor"){
-       //     for(var j = 0; j < el.questionId.length; j++){
-       //       console.log(j)
-       //     }
-       //  }
+        el.questions.map(ele => {
+          // ravenRight.push(ele)
+          console.log(ele)
+          
+          for(var j = 1; j < Object.values(ele).length; j++){
+            console.log(Object.values(ele)[j])
+            x[j] += Object.values(ele)[j]
+          }
+          console.log(x)
+          // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
+        })
+        console.log(x)
       })
+      chartData.push(
+        {
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        datasets: [{ data: x,
+                    backgroundColor: "rgba(32, 103, 29, 0.5)",
+                    label:"Gryffindor"
+                                    }]
+      })
+      this.setState({ chartData });
     })
     .catch(err => console.log(err))
+
 
     quizAPI.getRaven()
     .then(res => {
@@ -78,17 +112,7 @@ class Chart extends Component {
         {
         labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
         datasets: [{ data: x,
-                    backgroundColor: ["rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                      "rgba(11, 37, 141, 0.5)",
-                                    ],
+                    backgroundColor: "rgba(11, 37, 141, 0.5)",
                     label:"Gryffindor"
                                     }]
       })
@@ -96,6 +120,34 @@ class Chart extends Component {
     })
     .catch(err => console.log(err))
 
+    quizAPI.getHuff()
+    .then(res => {
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      res.data.forEach(el => {
+        el.questions.map(ele => {
+          // ravenRight.push(ele)
+          console.log(ele)
+          
+          for(var j = 1; j < Object.values(ele).length; j++){
+            console.log(Object.values(ele)[j])
+            x[j] += Object.values(ele)[j]
+          }
+          console.log(x)
+          // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
+        })
+        console.log(x)
+      })
+      chartData.push(
+        {
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        datasets: [{ data: x,
+                    backgroundColor: "rgba(202, 183, 6, 0.5)",
+                    label:"Gryffindor"
+                                    }]
+      })
+      this.setState({ chartData });
+    })
+    .catch(err => console.log(err))
 
     // axios
     //   .get(
