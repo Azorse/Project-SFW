@@ -1,12 +1,13 @@
 require('dotenv').config()
 
-const express = require('express')
-const session = require('express-session')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
-const passport = require('passport')
+const path = require('path');
+const express = require('express');
+const session = require('express-session');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const passport = require('passport');
 const flash = require('connect-flash');
-const routes = require("./routes")
+const routes = require("./routes");
 
 const app = express();
 
@@ -30,7 +31,6 @@ app.use(
   })
 )
 
-
 //Passport
 app.use(passport.initialize())
 app.use(passport.session())
@@ -41,11 +41,15 @@ app.use(flash());
 //Routes
 app.use(routes)
 
+// Express serve up index.html file if it doesn't recognize route
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
+
 //db
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sfw")
     .then(()=> console.log(`Mongo Connected...`))
     .catch(err => console.log(err));
-
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Server started on port ${port}`));
