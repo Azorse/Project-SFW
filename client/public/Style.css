@@ -18,3 +18,47 @@ body {
   background-image: url(./Media-Files/32966.jpg);
   font-family: "secondFont";
 }
+.navButton {
+  font-family: "secondFont";
+  font-size: x-large;
+}
+
+/* Mobile Responsive Start */
+@media (max-width: 375px) {
+  .navButton {
+    width: 100%;
+    color: white;
+    padding: 20px;
+    font-family: "secondFont";
+    font-size: x-large;
+    font-weight: bolder;
+  }
+  .btn {
+    width: 100%;
+    padding: 15px;
+    font-family: "secondFont";
+    font-size: x-large;
+  }
+  .form-control {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .navButton {
+    width: 100%;
+    color: white;
+    padding: 10px;
+    font-family: "secondFont";
+    font-size: large;
+    font-weight: bolder;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+  }
+  /* .list-group-item {
+    width: 25px;
+    height: 25px;
+    padding: 25px;
+  } */
+}

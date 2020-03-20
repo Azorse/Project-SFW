@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import { Col, Row, Container } from "../components/Grid";
 import { Jumbotron } from "../components/Jumbotron";
 import quizAPI from "../utils/quizAPI"
@@ -16,6 +16,7 @@ import Hogwarts from "../components/Images/hogwartsSmall.png";
 class Quiz extends Component {
 
     state = {
+      redirect: false,
       questions,
       questionsArr: [],
       selectedOption: {},
@@ -112,7 +113,6 @@ class Quiz extends Component {
 
   handleOptionChange = (changeEvent) => {
     const val = changeEvent.target
-    // const ho = this.state.house
     const value = parseInt(val.value)
       // const prevState = {};
       this.setState( prevState => (
@@ -167,7 +167,7 @@ class Quiz extends Component {
       }],
       houseName: this.state.house
     })
-    .then(res => {console.log(res)})
+    .then(res => {this.setState({redirect: true})})
     .catch(err => console.log(err))
       
     // for (var i = 0; i < this.state.selectedOption.length; i++){
@@ -184,7 +184,13 @@ class Quiz extends Component {
   }
 
   render() {
-    const {id, house} = this.props.location.state
+    const {id, house} = this.state
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/standings' />;
+    }
+
     return (
       <Container fluid>
       <Nav firstName={this.state.firstName}/>
@@ -216,10 +222,8 @@ class Quiz extends Component {
           <br></br>
         </div>
       ))}
-      <Link to="/standings">
-       <button href="/standings" className="btn btn-default" 
+       <button className="btn btn-default" 
        type="submit">Save</button>
-       </Link>
        {/* <h1>{house}</h1> */}
       </form>
       </div>

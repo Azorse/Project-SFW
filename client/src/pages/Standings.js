@@ -71,28 +71,38 @@ class Chart extends Component {
     this.loggedIn();
      quizAPI.getGryff()
      .then(res => {
-      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       res.data.forEach(el => {
         el.questions.map(ele => {
           // ravenRight.push(ele)
-          console.log(ele)
+          // console.log(ele)
           
           for(var j = 1; j < Object.values(ele).length; j++){
             console.log(Object.values(ele)[j])
-            x[j] += Object.values(ele)[j]
+            x[j - 1] += Object.values(ele)[j]
           }
-          console.log(x)
+          // console.log(x)
           // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
         })
-        console.log(x)
+        // console.log(x)
+        
       })
       chartData.push(
         {
-        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Zero Axes"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(139, 23, 23, 0.5)",
                     label:"Gryffindor"
-                                    }]
+                                    }],
+          options:{
+            scales: {
+                yAxes : [{
+                    ticks : { 
+                        min : 0
+                    }
+                }]
+            }
+        }
       })
       this.setState({ chartData });
     })
@@ -102,28 +112,38 @@ class Chart extends Component {
     //Get Slytherin
     quizAPI.getSlyth()
     .then(res => {
-      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       res.data.forEach(el => {
         el.questions.map(ele => {
           // ravenRight.push(ele)
-          console.log(ele)
+          // console.log(ele)
           
           for(var j = 1; j < Object.values(ele).length; j++){
             console.log(Object.values(ele)[j])
-            x[j] += Object.values(ele)[j]
+            x[j - 1] += Object.values(ele)[j]
           }
-          console.log(x)
+          // console.log(x)
           // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
         })
-        console.log(x)
+        // console.log(x)
       })
       chartData.push(
         {
-        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Zero Axes"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(32, 103, 29, 0.5)",
                     label:"Slytherin"
-                                    }]
+                                    }],
+        options:{
+          scales: {
+              yAxes : [{
+                  ticks : {
+                      max : 1,    
+                      min : -1
+                  }
+              }]
+          }
+      }
       })
       this.setState({ chartData });
     })
@@ -132,28 +152,34 @@ class Chart extends Component {
 
     quizAPI.getRaven()
     .then(res => {
-      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       res.data.forEach(el => {
         el.questions.map(ele => {
           // ravenRight.push(ele)
           console.log(ele)
-          
-          for(var j = 1; j < Object.values(ele).length; j++){
-            console.log(Object.values(ele)[j])
-            x[j] += Object.values(ele)[j]
+          var objV = Object.values(ele)
+          for(var j = 1; j < objV.length; j++){
+            console.log(objV[j])
+            x[j - 1] += objV[j]
           }
           console.log(x)
           // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
         })
-        console.log(x)
-      })
+   
+      })    
       chartData.push(
         {
-        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Zero Axes"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(11, 37, 141, 0.5)",
-                    label:"Ravenclaw"
-                                    }]
+                    label:"Ravenclaw",
+
+                  }],
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
       })
       this.setState({ chartData });
     })
@@ -161,7 +187,7 @@ class Chart extends Component {
 
     quizAPI.getHuff()
     .then(res => {
-      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       res.data.forEach(el => {
         el.questions.map(ele => {
           // ravenRight.push(ele)
@@ -169,16 +195,16 @@ class Chart extends Component {
           
           for(var j = 1; j < Object.values(ele).length; j++){
             console.log(Object.values(ele)[j])
-            x[j] += Object.values(ele)[j]
+            x[j - 1] += Object.values(ele)[j]
           }
-          console.log(x)
+          // console.log(x)
           // Object.keys(ele).forEach(x => console.log(Object.values(ele)))
         })
-        console.log(x)
+        // console.log(x)
       })
       chartData.push(
         {
-        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
+        labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10", "Zero Axes"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(202, 183, 6, 0.5)",
                     label:"Hufflepuff"
@@ -254,12 +280,12 @@ class Chart extends Component {
                 <Col size="md-12">
                 <div className="chart">
                   {this.state.chartData.map((n, index) => {
-                    return <Bar key={index} data={n} />;
+                    return <Bar key={index} data={n}/>;
                   })}
                 </div>
-                </Col>
-              </Row>
-            </Container>
+             </Col>
+            </Row>
+          </Container>
       
     );
   }
