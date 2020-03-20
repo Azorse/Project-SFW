@@ -60,7 +60,7 @@ const QuizSchema = new Schema({
         ref: 'user'
     },
     answeredCorrectly: {
-        type: Boolean,
+        type: Number,
         required: true,
         ref: 'user'
     }

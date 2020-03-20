@@ -2,20 +2,19 @@
     {
         "questionID": 1,
         "questionTitle": "This is question 1 LOL",
-        "answers": ["Answer 1", "Answer 2", "Answer 3"],
-        "correctAnswer": "Answer 1"
+        "options": ["Option 1", "Option 2", "Option 3"],
+        "correctAnswer": 1
     },
     {
         "questionID": 2,
         "questionTitle": "This is question 2 LMAO",
-        "answers": ["Answer 4", "Answer 5", "Answer 6"],
-        "correctAnswer": "Answer 5"
+        "options": ["Option 4", "Option 5", "Option 6"],
+        "correctAnswer": 2
     },
-
     {
         "questionID": 3,
         "questionTitle": "This is question 3 HAHA",
-        "answers": ["Answer 7", "Answer 8", "Answer 9"],
-        "correctAnswer": "Answer 8"
+        "options": ["Option 7", "Option 8", "Option 9"],
+        "correctAnswer": 2
     }
 ]
