@@ -75,6 +75,37 @@ export function Jumbotron2({ children }) {
   );
 }
 
+export function Jumbotron3(props) {
+  return (
+    <Jtron>
+      <Row className="justify-content-between">
+        {/* <img src={props.image} width="200" height="250" alt="House Crest" />{" "} */}
+        <Link
+          to={{
+            pathname: "/houseInfo",
+            state: { id: props.id, house: props.house }
+          }}
+        >
+          <h1>WELCOME TO THE {props.house.toUpperCase()} HOUSE</h1>
+        </Link>
+        {/* <img src={props.image} width="200" height="250" alt="House Crest" />{" "} */}
+      </Row>
+      <Row className="d-flex justify-content-between pb-3 text-center Button">
+        <Link
+          to={{
+            pathname: "/home",
+            state: { id: props.id, house: props.house }
+          }}
+        >
+          <Button outline color="warning">
+            Home
+          </Button>{" "}
+        </Link>
+      </Row>
+    </Jtron>
+  );
+}
+
 // export function Jumbotron2({ children }) {
 //   return (
 //     <div

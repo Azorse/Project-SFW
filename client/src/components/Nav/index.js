@@ -5,14 +5,15 @@ function TopNavbar() {
   return (
     <Navbar expand="lg" dark={true}>
       <NavbarBrand href="/">Harry Potter Web App</NavbarBrand>
-      {/* <Nav className="mr-auto" navbar>
+      <Nav className="float-right" navbar>
         <NavItem>
           <NavLink href="/" active>
-            LogIn
+            LogOut
           </NavLink>
         </NavItem>
-      </Nav> */}
+      </Nav>
     </Navbar>
+
   );
 }
 

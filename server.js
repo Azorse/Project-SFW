@@ -16,6 +16,12 @@ require('./passport/passport')(passport);
 //Middleware
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
+
+// Serve up static assets on heroku
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.use(
   session({
   secret: process.env.SECRET_KEY || "LGTM",
@@ -23,6 +29,7 @@ app.use(
   saveUninitialized: false
   })
 )
+
 
 //Passport
 app.use(passport.initialize())
@@ -35,7 +42,7 @@ app.use(flash());
 app.use(routes)
 
 //db
-mongoose.connect("mongodb://localhost/sfw")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sfw")
     .then(()=> console.log(`Mongo Connected...`))
     .catch(err => console.log(err));
 
