@@ -9,7 +9,13 @@ const quizAPI = {
     return axios.get("/api/quiz/gryff");
   },
   getSlyth: function(house){
-    return axios.get("/api/quiz/Slyth");
+    return axios.get("/api/quiz/slyth");
+  },
+  getRaven: function(house){
+    return axios.get("/api/quiz/raven")
+  },
+  getHuff: function(house){
+    return axios.get("/api/quiz/huff")
   },
   // Gets the book with the given id
   // getUser: function(id) {
