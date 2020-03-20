@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
-import { Alert } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Alert, Button } from "reactstrap";
 import { Col, Row, Container } from "../components/Grid";
 import { ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
@@ -9,7 +10,7 @@ import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
-import Hogwarts from "../components/Images/hogwartsSmall.png";
+// import Hogwarts from "../components/Images/hogwartsSmall.png";
 
 
 class LogIn extends Component {
@@ -19,7 +20,7 @@ class LogIn extends Component {
       { name: Hufflepuff, value: "Hufflepuff" },
       { name: Ravenclaw, value: "Ravenclaw" },
       { name: Slytherin, value: "Slytherin" },
-      { name: Hogwarts, value: "Hogwarts"}
+      // { name: Hogwarts, value: "Hogwarts"}
     ],
     email: "",
     password: "",
@@ -138,14 +139,38 @@ class LogIn extends Component {
               />
               <FormBtn
                 type="submit"
+                className="warning"
+
                 disabled={!(this.state.email && this.state.password)}
               >
                 Submit
               </FormBtn>
+              <Link to="/register">Haven't receievd your owl?</Link>
             </form>
           </Col>
           <Col size="md-4"></Col>
         </Row>
+        {/* <Row className="d-flex justify-content-center">
+          <Col size="md-4"></Col>
+            <Col size="md-4" className="d-flex justify-content-between ">
+              <Link 
+                to="/api/users/google"
+                >
+                <Button outline color="warning" className="btn btn-secondary">Google</Button>
+              </Link>
+              <Link 
+                to="/api/users/github"
+                >
+                <Button outline color="warning" className="btn btn-secondary">Github</Button>
+              </Link>
+              <Link 
+                to="/api/users/twitter"
+                >
+                <Button outline color="warning" className="btn btn-secondary">Twitter</Button>
+              </Link>
+            </Col>
+          <Col size="md-4"></Col>
+        </Row> */}
         <Row>
           {this.state.images.map(image => (
             <ListItem>
