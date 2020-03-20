@@ -51,7 +51,6 @@ router.route('/logout')
 
 router.get("/home", authMiddle.isLoggedIn, function(req, res, next) {
   console.log(`hitting /home`)
-  debugger
   res.json({
     user: req.user,
     loggedIn: true

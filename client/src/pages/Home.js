@@ -109,7 +109,7 @@ class Home extends Component {
     const { houseImg, houseData, house } = this.state;
     return (
       <Container fluid>
-      <Nav />
+      <Nav firstName={this.state.firstName}/>
         <Row>
           <Col size="md-12">
             <Jumbotron house={house} image={houseImg}>
