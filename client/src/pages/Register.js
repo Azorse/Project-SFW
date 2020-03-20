@@ -1,16 +1,16 @@
 import React, { Component } from "react";
+import DeleteBtn from "../components/Button";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import { Redirect } from "react-router";
 import API from "../utils/API.js";
-import { Alert } from "reactstrap";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { ListItem } from "../components/List";
-import { Input, FormBtn } from "../components/Form";
+import { List, ListItem } from "../components/List";
+import { Input, TextArea, FormBtn } from "../components/Form";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
-// import Hogwarts from "../components/Images/hogwartsSmall.png";
 
 class Register extends Component {
   state = {
@@ -18,19 +18,14 @@ class Register extends Component {
       {name: Gryffindor, value: "Gryffindor"}, 
       {name: Hufflepuff, value: "Hufflepuff"},
       {name: Ravenclaw, value: "Ravenclaw"},
-      {name: Slytherin, value: "Slytherin"},
-      // {name: Hogwarts, value: "Hogwarts"}
+      {name: Slytherin, value: "Slytherin"}
     ],
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     house: "",
-<<<<<<< HEAD
     id: "",
-=======
-    message: "",
->>>>>>> 9027f022c8a0e4d700c4f4f8ad53859bd549ad73
     redirect: false
   };
   checkImg = (e, value) => {
@@ -39,32 +34,27 @@ class Register extends Component {
       case Gryffindor:
         console.log("chose the good boys");
         this.setState({
-          house: "Gryffindor"
+          house: "gryffindor"
         });
         break;
       case Hufflepuff:
         console.log("chose the boring boys");
         this.setState({
-          house: "Hufflepuff"
+          house: "hufflepuff"
         });
         break;
       case Ravenclaw:
         console.log("chose the nerdy boys");
         this.setState({
-          house: "Ravenclaw"
+          house: "ravenclaw"
         });
         break;
       case Slytherin:
         console.log("chose the cool boys");
         this.setState({
-          house: "Slytherin"
+          house: "slytherin"
         });
         break;
-      default:
-        console.log("nothing was chosen");
-        this.setState({
-          house: "hogwarts"
-        });
     }
   };
 
@@ -91,17 +81,11 @@ class Register extends Component {
         password: this.state.password,
         houseName: this.state.house
       })
-<<<<<<< HEAD
         .then((user) => {
           console.log(user)
           this.setState({ redirect: true,  id: user.data._id})
         })
         .catch(err => console.log(err));
-=======
-
-        .then(() => this.setState({ redirect: true }))
-        .catch(err => {this.setState({message: "That email has already taken."})});
->>>>>>> 9027f022c8a0e4d700c4f4f8ad53859bd549ad73
     }
   };
 
@@ -109,16 +93,8 @@ class Register extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-<<<<<<< HEAD
       return <Redirect to={{ pathname: "/", state: {id: this.state.id, house: this.state.house} }} />;
     }
-=======
-      return <Redirect to="/" />;
-    } 
-    // else {
-    //   other component
-    // }
->>>>>>> 9027f022c8a0e4d700c4f4f8ad53859bd549ad73
 
     return (
       <Container fluid>
@@ -129,12 +105,6 @@ class Register extends Component {
               <h1>Register</h1>
             </Jumbotron>
             <form onSubmit={this.handleFormSubmit}>
-              <hr />
-              {this.state.message ? (
-                <Alert className="animated fadeIn" color="danger">
-                  {this.state.message}
-                </Alert>
-              ) : (<></>)}
               <Input
                 value={this.state.firstName}
                 onChange={this.handleInputChange}
@@ -168,7 +138,7 @@ class Register extends Component {
                     this.state.firstName &&
                     this.state.lastName &&
                     this.state.email &&
-                    this.state.password &&
+                    this.state.password && 
                     this.state.house
                   )
                 }
@@ -176,26 +146,24 @@ class Register extends Component {
                 Sign Up
               </FormBtn>
             </form>
-          </Col>
-          <Col size="md-4"></Col>
-        </Row>
-        <Row>
+         </Col>
+        <Col size="md-4"></Col>
+      </Row>
+      <Row>
           {this.state.images.map(image => (
             <ListItem>
               <img
-                alt="house crest"
                 src={image.name}
                 id={image.value}
                 width="200"
                 height="250"
                 value={image.value}
-                onClick={e => this.checkImg(e, image.name)}
-              ></img>
+                onClick={e => this.checkImg(e, image.name)}></img>
             </ListItem>
           ))}
         </Row>
-      </Container>
-    );
+    </Container>
+  );
 }
 }
 

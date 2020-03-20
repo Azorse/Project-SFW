@@ -112,45 +112,7 @@ class Home extends Component {
       <Nav firstName={this.state.firstName}/>
         <Row>
           <Col size="md-12">
-<<<<<<< HEAD
             <Jumbotron house={house} image={houseImg}/>
-=======
-            <Jumbotron house={house} image={houseImg}>
-              <h1>Hello {this.state.firstName}</h1>
-              {/* <h1> {house} </h1> */}
-              <br></br>
-              <Row>
-                <Col size="md-3">
-                  <Link to="/lessons">
-                    <ListItem>
-                      <h1>Lessons</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-                <Col size="md-3">
-                  <Link to="/quiz">
-                    <ListItem>
-                      <h1>Quiz Page</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-                <Col size="md-3">
-                  <Link to="/standings">
-                    <ListItem>
-                      <h1>Scores</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-                <Col size="md-3">
-                  <Link to="/">
-                    <ListItem>
-                      <h1>User Profile</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-              </Row>
-            </Jumbotron>
->>>>>>> 9027f022c8a0e4d700c4f4f8ad53859bd549ad73
           </Col>
         </Row>
         <Row>
