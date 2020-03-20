@@ -11,28 +11,28 @@ module.exports = {
   findGryff: function(req, res) {
     dbq.Quiz
       .find(req.query)
-      .where('houseName').equals("gryffindor")
+      .where('houseName').equals("Gryffindor")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findSlyth: function(req, res) {
     dbq.Quiz
       .find(req.query)
-      .where('houseName').equals("slytherin")
+      .where('houseName').equals("Slytherin")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findRaven: function(req, res) {
     dbq.Quiz
       .find(req.query)
-      .where('houseName').equals("ravenclaw")
+      .where('houseName').equals("Ravenclaw")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findHuff: function(req, res) {
     dbq.Quiz
       .find(req.query)
-      .where('houseName').equals("hufflepuff")
+      .where('houseName').equals("Hufflepuff")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
