@@ -3,7 +3,20 @@ import ReactDOM from "react-dom";
 import quizAPI from "../utils/quizAPI"
 import { Line, Bar } from "react-chartjs-2";
 import axios from "axios";
+import API from "../utils/API";
 import questions from "../question.json"
+import Gryffindor from "../components/Images/gryffindorSmall.png";
+import Hufflepuff from "../components/Images/hufflepuffSmall.png";
+import Ravenclaw from "../components/Images/ravenclawSmall.png";
+import Slytherin from "../components/Images/slytherinSmall.png";
+import Hogwarts from "../components/Images/hogwartsSmall.png";
+import { Col, Row, Container } from "../components/Grid";
+import { List, ListItem } from "../components/List";
+import { Input, TextArea, FormBtn } from "../components/Form";
+import DeleteBtn from "../components/Button";
+import { Jumbotron } from "../components/Jumbotron";
+import Nav from "../components/Nav"
+
 //import questions from "../quiz.json"
 
 class Chart extends Component {
@@ -17,19 +30,50 @@ class Chart extends Component {
       gryffinRight: [],
       ravenRight: [],
       slytherRight: [],
-      huffleRight: []
+      huffleRight: [],
+      images: [
+        {
+          name: Gryffindor,
+          value: "gryffindor",
+          data:
+            "The Gryffindor house emphasises the traits of courage as well as daring, nerve, and chivalry, and thus its members are generally regarded as brave, though sometimes to the point of recklessness. Some Gryffindors have also been noted to be short-tempered."
+        },
+        {
+          name: Hufflepuff,
+          value: "hufflepuff",
+          data:
+            "Students belonging to this house are known to be hard-working, friendly, loyal, honest and rather impartial. It may be that due to their values, Hufflepuffs are not as competitive as the other houses, and are more modest about their accomplishments. Hufflepuff is the most inclusive among the four houses; valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its students."
+        },
+        {
+          name: Ravenclaw,
+          value: "ravenclaw",
+          data:
+            "Ravenclaw House prizes learning, wisdom, wit, and intellect in its members. Thus, many Ravenclaws tend to be academically motivated and talented students. They also pride themselves on being original in their ideas, and methods. It's not unusual to find Ravenclaw students practising especially different types of magic that other houses might shun."
+        },
+        {
+          name: Slytherin,
+          value: "slytherin",
+          data:
+            "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
+        },
+        {
+          name: Hogwarts,
+          value: "hogwarts",
+          data:
+            "You have yet to be sorted"
+        }
+      ],
+      firstName: "",
+      house: "",
+      houseImg: "",
+      houseData: "",
+      loggedIn: false,
+      user: null
     };
   }
 
-
-
   componentDidMount() {
-    const gryffinRight= []
-    const ravenRight = []
-    const slytherRight= []
-    const ids = []
-  
-    //Get Gryffindor
+    this.loggedIn();
      quizAPI.getGryff()
      .then(res => {
       const x = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -83,7 +127,7 @@ class Chart extends Component {
         labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(32, 103, 29, 0.5)",
-                    label:"Gryffindor"
+                    label:"Slytherin"
                                     }]
       })
       this.setState({ chartData });
@@ -113,7 +157,7 @@ class Chart extends Component {
         labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(11, 37, 141, 0.5)",
-                    label:"Gryffindor"
+                    label:"Ravenclaw"
                                     }]
       })
       this.setState({ chartData });
@@ -142,76 +186,86 @@ class Chart extends Component {
         labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
         datasets: [{ data: x,
                     backgroundColor: "rgba(202, 183, 6, 0.5)",
-                    label:"Gryffindor"
+                    label:"Hufflepuff"
                                     }]
       })
       this.setState({ chartData });
     })
     .catch(err => console.log(err))
 
-    // axios
-    //   .get(
-    //     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=2&page=1&sparkline=true"
-    //   )
-    //   .then(res => {
-        // const x = res.data;
-        // const x = questions;
-        let chartData = [];
-        // this.state.houses.forEach(element => {
-        //   chartData.push(
-        //     {
-        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
-        //     datasets: [{ data:[10, 15, 15, 5],
-        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
-        //                                   "rgba(32, 103, 29, 0.5)",
-        //                                   "rgba(11, 37, 141, 0.5)",
-        //                                   "rgba(202, 183, 6, 0.5)"],
-        //                 label:"Gryffindor"
-        //                                 }]
-        //   },
-        //   {
-        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
-        //     datasets: [{ data:[10, 15, 15, 5],
-        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
-        //                                   "rgba(32, 103, 29, 0.5)",
-        //                                   "rgba(11, 37, 141, 0.5)",
-        //                                   "rgba(202, 183, 6, 0.5)"],
-        //                 label:"Slytherin"
-        //                                 }]
-        //   },
-        //   {
-        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
-        //     datasets: [{ data:[10, 15, 15, 5],
-        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
-        //                                   "rgba(32, 103, 29, 0.5)",
-        //                                   "rgba(11, 37, 141, 0.5)",
-        //                                   "rgba(202, 183, 6, 0.5)"],
-        //                 label:"Ravenclaw"
-        //                                 }]
-        //   },
-        //   {
-        //     labels: ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "Q9", "Q10"],
-        //     datasets: [{ data:[10, 15, 15, 5],
-        //                 backgroundColor: ["rgba(139, 23, 23, 0.5)",
-        //                                   "rgba(32, 103, 29, 0.5)",
-        //                                   "rgba(11, 37, 141, 0.5)",
-        //                                   "rgba(202, 183, 6, 0.5)"],
-        //                 label:"Hufflepuff"
-        //                                 }]
-        //   },
-        //   );
-        // // });
-        // this.setState({ chartData });
-      // });
-     }
+    let chartData = [];
+  }
+
+  loggedIn = () => {
+    API.isLoggedIn().then( user => {
+      if (user.data.loggedIn) {
+        this.setState({
+          user: user.data.user._id,
+          firstName: user.data.user.firstName,
+          house: user.data.user.houseName,
+          loggedIn: true
+        })
+        this.loadUser(user.data.user.houseName)
+      }
+    }).catch(err => {
+      console.log(err)
+    });
+  }
+
+  loadUser = house => {
+    let theHouse = house;
+    let houseDesc = "";
+    console.log(house)
+
+    switch (theHouse) {
+      case this.state.images[0].value:
+        theHouse = this.state.images[0].name;
+        houseDesc = this.state.images[0].data;
+        break;
+      case this.state.images[1].value:
+        theHouse = this.state.images[1].name;
+        houseDesc = this.state.images[1].data;
+        break;
+      case this.state.images[2].value:
+        theHouse = this.state.images[2].name;
+        houseDesc = this.state.images[2].data;
+        break;
+      case this.state.images[3].value:
+        theHouse = this.state.images[3].name;
+        houseDesc = this.state.images[3].data;
+        break;
+      default:
+        theHouse = this.state.images[4].name;
+        houseDesc = this.state.images[4].data;
+    }
+    this.setState({ houseImg: theHouse, houseData: houseDesc });
+  };
+
 
   render() {
+    const {id, house} = this.props.location.state
     return (
-      <div className="chart">
-        {this.state.chartData.map((n, index) => {
-          return <Bar key={index} data={n} />;
-        })}
-      </div>
+            <Container fluid>
+            <Nav />
+              <Row>
+                <Col size="md-12">
+                  <Jumbotron house={house} image={this.state.houseImg} id={id}>
+                    <h1>Harry Potter Quiz</h1>
+                  </Jumbotron>
+                  <h1>Hello {id}{house}</h1>
+                </Col>
+              </Row>
+              <Row>
+                <Col size="md-12">
+                <div className="chart">
+                  {this.state.chartData.map((n, index) => {
+                    return <Bar key={index} data={n} />;
+                  })}
+                </div>
+                </Col>
+              </Row>
+            </Container>
+      
     );
   }
 }

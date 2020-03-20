@@ -1,62 +1,62 @@
 [
     {
         "questionID": 0,
-        "questionTitle": "This is question 1 LOL",
-        "options": ["Option 1", "Option 2", "Option 3"],
+        "questionTitle": "What do wizards use as a primary means of communication?",
+        "options": ["Howlers", "Owls", "Written Letters"],
         "correctAnswer": 1
     },
     {
         "questionID": 1,
-        "questionTitle": "This is question 2 LMAO",
-        "options": ["Option 4", "Option 5", "Option 6"],
+        "questionTitle": "Who stated that 'a ghost is merely the imprint of a departed soul left upon the earth'?",
+        "options": ["Dumbledore", "Prof. Umbridge", "Severus Snape"],
         "correctAnswer": 2
     },
     {
         "questionID": 2,
-        "questionTitle": "This is question 3 HAHA",
-        "options": ["Option 7", "Option 8", "Option 9"],
-        "correctAnswer": 2
+        "questionTitle": "What type of wood is Voldemort's wand made of?",
+        "options": ["Yew", "Oak", "Magic Teak"],
+        "correctAnswer": 0
     },
     {
         "questionID": 3,
-        "questionTitle": "This is question 1 LOL",
-        "options": ["Option 1", "Option 2", "Option 3"],
+        "questionTitle": "How long ago was Hogwarts founded?",
+        "options": ["1000 years ago", "455 years ago", "2,100 years ago"],
         "correctAnswer": 0
     },
     {
         "questionID": 4,
-        "questionTitle": "This is question 2 LMAO",
-        "options": ["Option 4", "Option 5", "Option 6"],
+        "questionTitle": "At Hogwarts, grades include Outstanding, Exceeds Expectations, and _______",
+        "options": ["Fair", "Average", "Acceptable"],
         "correctAnswer": 2
     },
     {
         "questionID": 5,
-        "questionTitle": "This is question 3 HAHA",
-        "options": ["Option 7", "Option 8", "Option 9"],
-        "correctAnswer": 2
+        "questionTitle": "A 'Mandrake' is also known as what?",
+        "options": ["Shrieking Imp", "Mandragora", "Seedling"],
+        "correctAnswer": 1
     },
     {
         "questionID": 6,
-        "questionTitle": "This is question 3 HAHA",
-        "options": ["Option 7", "Option 8", "Option 9"],
-        "correctAnswer": 2
+        "questionTitle": "Wounds from a Basilisk Fang can be cured from Phoenix-",
+        "options": ["Feathers", "Tears", "Talons"],
+        "correctAnswer": 1
     },
     {
         "questionID": 7,
-        "questionTitle": "This is question 2 LMAO",
-        "options": ["Option 4", "Option 5", "Option 6"],
+        "questionTitle": "Dark charms can be classified into three groups: jinxes, _____, and curses",
+        "options": ["Allures", "Poisons", "Hexes"],
         "correctAnswer": 2
     },
     {
         "questionID": 8,
-        "questionTitle": "This is question 3 HAHA",
-        "options": ["Option 7", "Option 8", "Option 9"],
-        "correctAnswer": 2
+        "questionTitle": "The ______ Tree Calendar has assigned trees to different parts of the year and it sometimes plays a part in wandlore.",
+        "options": ["Celtic", "Wizarding", "Illusionary"],
+        "correctAnswer": 0
     },
     {
         "questionID": 9,
-        "questionTitle": "This is question 3 HAHA",
-        "options": ["Option 7", "Option 8", "Option 9"],
+        "questionTitle": "Which Rule is written as 'while it is possible to conjure things out of nothing and duplicate items, it is far more tricky to create something that fits an exact specification rather than a general one'? ",
+        "options": ["Rule of Conjuration", "Rule of Fabrication", "Rule of Creation"],
         "correctAnswer": 2
     }
 ]
