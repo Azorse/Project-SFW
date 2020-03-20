@@ -28,7 +28,7 @@ export function Jumbotron(props) {
             Scores
           </Button>{" "}
         </Link>
-        <Link to={{ pathname: "/", state: {id: props.id, house: props.house} }}>
+        <Link to={{ pathname: "/userProfile", state: {id: props.id, house: props.house} }}>
           <Button outline color="warning">
             User Profile
           </Button>{" "}

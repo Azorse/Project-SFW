@@ -10,6 +10,7 @@ import Nav from "./components/Nav";
 import Standings from "./pages/Standings";
 import Lessons from "./pages/Lessons";
 import Quiz from "./pages/Quiz";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/lessons" component={Lessons} />
           <Route exact path="/quiz" component={Quiz} />
+          <Route exact path="/userProfile" component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>
       </div>
