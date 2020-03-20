@@ -7,6 +7,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
+import Nav from "../components/Nav";
 
 class LogIn extends Component {
   state = {
@@ -75,9 +76,10 @@ class LogIn extends Component {
     const {id, house} = this.props.location.state
     return (
       <Container fluid>
+      <Nav />
         <Row>
           <Col size="md-12">
-            <Jumbotron house={this.state.house} image={this.state.houseImg}>
+            <Jumbotron house={house} image={this.state.houseImg} id={id}>
               <h1>Harry Potter Lesson</h1>
             </Jumbotron>
             <h1>Hello {id}{house}</h1>

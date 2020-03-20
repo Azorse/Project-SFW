@@ -1,27 +1,73 @@
-const db = require("../models");
-
+const dbq = require("../models");
+console.log(dbq)
 // Defining methods for the booksController
 module.exports = {
+  findAll: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findGryff: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .where('houseName').equals("gryffindor")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findSlyth: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .where('houseName').equals("slytherin")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findRaven: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .where('houseName').equals("ravenclaw")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findHuff: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .where('houseName').equals("hufflepuff")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findById: function(req, res) {
-    db.Quiz
+    dbq.Quiz
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  quizCheck: function(req, res) {
+    dbq.Quiz
+    .find(req.query)
+    .then(dbModel => {
+      dbModel 
+    })
+ 
   },  
   create: function(req, res) {
-    console.log(req.body)
-    db.Quiz
+    const {questions, houseName} = req.body
+    let newScore = 
+          {questions, houseName}
+    console.log(newScore)
+    dbq.Quiz
+      .create(newScore)
       .then(dbModel => res.json(dbModel))
-      .catch(err => {res.status(422).json({message: "idk"})});
+      .catch(err => {res.status(422).json(err)});
   },
   update: function(req, res) {
-    db.Quiz
+    dbq.Quiz
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
-    db.Quiz
+    dbq.Quiz
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))

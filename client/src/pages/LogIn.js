@@ -1,17 +1,19 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/Button";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import { Jumbotron as Jumbotron2 } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
+import { Alert, Button } from "reactstrap";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { ListItem } from "../components/List";
+import { Input, FormBtn } from "../components/Form";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
+// import Hogwarts from "../components/Images/hogwartsSmall.png";
+
 
 class LogIn extends Component {
   state = {
@@ -19,7 +21,8 @@ class LogIn extends Component {
       { name: Gryffindor, value: "Gryffindor" },
       { name: Hufflepuff, value: "Hufflepuff" },
       { name: Ravenclaw, value: "Ravenclaw" },
-      { name: Slytherin, value: "Slytherin" }
+      { name: Slytherin, value: "Slytherin" },
+      // { name: Hogwarts, value: "Hogwarts"}
     ],
     email: "",
     password: "",
@@ -27,7 +30,8 @@ class LogIn extends Component {
     loggedIn: false,
     user: null,
     message: "",
-    redirect: false
+    redirect: false,
+    error: ""
   };
 
   componentDidMount() {
@@ -61,6 +65,11 @@ class LogIn extends Component {
           house: "slytherin"
         });
         break;
+      default:
+        console.log("nothing was chosen");
+        this.setState({
+          house: "hogwarts"
+        });
     }
   };
 
@@ -74,19 +83,16 @@ class LogIn extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.email && this.state.password) {
-      console.log(`submitted`)
       API.userLogin({
         email:this.state.email,
         password:this.state.password
       })
       .then(user => {
-        console.log(user);
-        if (user.data.loggedIn) {
-          console.log(user.data)
+        if (user.data._id) {
           this.setState({
             loggedIn: true,
             house: user.data.houseName,
-            user: user.data.user._id,
+            user: user.data._id,
             redirect: true
           });
           console.log("log in successful");
@@ -98,10 +104,9 @@ class LogIn extends Component {
           })
         }
       })
-      .catch(err => console.log(err))
-    }
-
-  };
+      .catch(err => console.log(err));
+    };
+  }
 
   render() {
 
@@ -116,7 +121,27 @@ class LogIn extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-4"></Col>
+          <Col size="md-4">
+            <img src={Gryffindor} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>          
+          </Col>
           <Col size="md-4">
             <Jumbotron>
               {" "}
@@ -125,6 +150,12 @@ class LogIn extends Component {
               <h1>Log In</h1>{" "}
             </Jumbotron>
             <form onSubmit={this.handleFormSubmit}>
+              <hr />
+              {this.state.message && (
+                <Alert className="animated fadeIn" color="danger">
+                  {this.state.message}
+                </Alert>
+              )}
               <Input
                 value={this.state.username}
                 onChange={this.handleInputChange}
@@ -141,27 +172,101 @@ class LogIn extends Component {
               />
               <FormBtn
                 type="submit"
+                className="warning"
+
                 disabled={!(this.state.email && this.state.password)}
               >
                 Submit
               </FormBtn>
+              <Link to="/register">Haven't receievd your owl?</Link>
             </form>
           </Col>
-          <Col size="md-4"></Col>
+          <Col size="md-4">
+            <img src={Slytherin} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>
+          </Col>
+        </Row>
+        <Row className="d-flex justify-content-center">
+          <Col size="md-4">
+            <img src={Ravenclaw} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>
+          </Col>
+            <Col size="md-4" className="d-flex justify-content-between ">
+
+              {/* <Link 
+                to="/api/users/google"
+                >
+                <Button outline color="warning" className="btn btn-secondary">Google</Button>
+              </Link>
+              <Link 
+                to="/api/users/github"
+                >
+                <Button outline color="warning" className="btn btn-secondary">Github</Button>
+              </Link>
+              <Link 
+                to="/api/users/twitter"
+                >
+                <Button outline color="warning" className="btn btn-secondary">Twitter</Button>
+              </Link> */}
+            </Col>
+          <Col size="md-4">
+            <img src={Hufflepuff} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>
+          </Col>
         </Row>
         <Row>
-          {this.state.images.map(image => (
-            <ListItem>
-              <img
-                src={image.name}
-                id={image.value}
-                width="200"
-                height="250"
-                value={image.value}
-                onClick={e => this.checkImg(e, image.name)}
-              ></img>
-            </ListItem>
-          ))}
+
         </Row>
       </Container>
     );

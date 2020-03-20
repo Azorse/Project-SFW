@@ -23,7 +23,7 @@ export function Jumbotron(props) {
             Quiz Page
           </Button>{" "}
         </Link>
-        <Link to={{ pathname: "/scores", state: {id: props.id, house: props.house} }}>
+        <Link to={{ pathname: "/standings", state: {id: props.id, house: props.house} }}>
           <Button outline color="warning">
             Scores
           </Button>{" "}

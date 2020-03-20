@@ -2,9 +2,21 @@ import axios from "axios";
 
 const quizAPI = {
   // Gets all books
-  // getBooks: function() {
-  //   return axios.get("/api/books");
-  // },
+  getScores: function() {
+    return axios.get("/api/quiz");
+  },
+  getGryff: function(house){
+    return axios.get("/api/quiz/gryff");
+  },
+  getSlyth: function(house){
+    return axios.get("/api/quiz/slyth");
+  },
+  getRaven: function(house){
+    return axios.get("/api/quiz/raven")
+  },
+  getHuff: function(house){
+    return axios.get("/api/quiz/huff")
+  },
   // Gets the book with the given id
   // getUser: function(id) {
   //   return axios.get("/api/books/" + id);
@@ -15,7 +27,7 @@ const quizAPI = {
   // },
   // Saves a book to the database
   saveQuiz: function(quizData) {
-      console.log(quizData)
+      // console.log(quizData)
     return axios.post("/api/quiz", quizData);
   },
 
