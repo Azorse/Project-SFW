@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav, Navbar, NavItem, NavLink } from "reactstrap";
 import "./style.css";
-function TopNavbar() {
+function TopNavbar(props) {
 
   return (
     <Navbar dark={true} >
@@ -11,8 +11,8 @@ function TopNavbar() {
         </NavItem>
       </ Nav>
       <Nav className="justify-content-end">
-        <NavItem>
-          <NavLink href="/test">Welcome</NavLink>
+        <NavItem {...props}>
+          <NavLink href="/test">Welcome, {props.firstName}</NavLink>
         </NavItem>
         <NavItem>
           <NavLink href="/">LogOut</NavLink>
