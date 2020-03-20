@@ -50,7 +50,6 @@ router.route('/logout')
   .get(userController.logOut)
 
 router.get("/home", authMiddle.isLoggedIn, function(req, res, next) {
-  console.log(`hitting /home`)
   res.json({
     user: req.user,
     loggedIn: true
