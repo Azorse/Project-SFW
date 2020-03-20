@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -28,7 +29,8 @@ class LogIn extends Component {
     loggedIn: false,
     user: null,
     message: "",
-    error: ""
+    error: "",
+    redirect: false
   };
 
   componentDidMount() {
@@ -93,6 +95,7 @@ class LogIn extends Component {
           });
           console.log("log in successful");
           window.location.href = '/home';
+          // <Redirect to="/home" />
         }
         else if (user.data.message) {
           this.setState({
@@ -105,8 +108,14 @@ class LogIn extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
 
+    if (redirect) {
+      return <Redirect to="/" />;
+    } 
     return (
+
+
       <Container>
         <Row>
           <Col size="md-4">

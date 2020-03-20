@@ -12,7 +12,7 @@ function TopNavbar(props) {
       </ Nav>
       <Nav className="justify-content-end">
         <NavItem {...props}>
-          <NavLink href="/test">Welcome, {props.firstName}</NavLink>
+          <NavLink href="/userProfile">Welcome, {props.firstName}</NavLink>
         </NavItem>
         <NavItem>
           <NavLink href="/">LogOut</NavLink>

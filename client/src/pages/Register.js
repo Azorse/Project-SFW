@@ -99,9 +99,6 @@ class Register extends Component {
     if (redirect) {
       return <Redirect to="/" />;
     } 
-    // else {
-    //   other component
-    // }
 
     return (
       <Container fluid>

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import HouseInfo from "./pages/HouseInfo"
 import NoMatch from "./pages/NoMatch";
+import UserProfile from "./pages/UserProfile"
 
 import Standings from "./pages/Standings";
 import Lessons from "./pages/Lessons";
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Route exact path="/lessons" component={Lessons} />
           <Route exact path="/quiz" component={Quiz} />
+          <Route exact path="/userProfile" component={UserProfile} />
           <Route component={NoMatch} />
         </Switch>
       </div>

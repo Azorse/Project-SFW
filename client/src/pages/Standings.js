@@ -272,7 +272,7 @@ class Chart extends Component {
     const {id, house} = this.state
     return (
             <Container fluid>
-            <Nav />
+            <Nav firstName={this.state.firstName}/>
               <Row>
                 <Col size="md-12">
                   <Jumbotron house={house} image={this.state.houseImg} id={id}>

@@ -47,7 +47,7 @@ class Quiz extends Component {
         },
         {
           name: Hogwarts,
-          value: "hogwarts",
+          value: "Hogwarts",
           data:
             "You have yet to be sorted"
         }
@@ -193,7 +193,7 @@ class Quiz extends Component {
 
     return (
       <Container fluid>
-      <Nav />
+      <Nav firstName={this.state.firstName}/>
         <Row>
           <Col size="md-12">
             <Jumbotron house={house} image={this.state.houseImg} id={id}>

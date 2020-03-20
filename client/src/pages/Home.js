@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import { Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -40,7 +41,7 @@ class Home extends Component {
       },
       {
         name: Hogwarts,
-        value: "hogwarts",
+        value: "Hogwarts",
         data:
           "You have yet to be sorted"
       }
