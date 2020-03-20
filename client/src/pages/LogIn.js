@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Button";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
+import { Jumbotron as Jumbotron2 } from "../components/Jumbotron";
 import API from "../utils/API";
+import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
@@ -24,7 +26,8 @@ class LogIn extends Component {
     house: "",
     loggedIn: false,
     user: null,
-    message: ""
+    message: "",
+    redirect: false
   };
 
   componentDidMount() {
@@ -82,10 +85,12 @@ class LogIn extends Component {
           console.log(user.data)
           this.setState({
             loggedIn: true,
-            user: user.data.user._id
+            house: user.data.houseName,
+            user: user.data.user._id,
+            redirect: true
           });
           console.log("log in successful");
-          window.location.href = '/home';
+          // window.location.href = '/home';
         }
         else if (user.data.message) {
           this.setState({
@@ -99,6 +104,14 @@ class LogIn extends Component {
   };
 
   render() {
+
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return (
+        <Redirect to={{ pathname: "/home", state: {id: this.state.user, house: this.state.house} }} />
+      )
+    }
 
     return (
       <Container>

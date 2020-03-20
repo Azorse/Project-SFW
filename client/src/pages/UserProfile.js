@@ -60,26 +60,6 @@ class UserProfile extends Component {
     this.setState({ houseImg: theHouse, houseData: houseDesc });
   };
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
   render() {
     const {id, house} = this.props.location.state
     const { houseImg, houseData } = this.state;
@@ -88,6 +68,7 @@ class UserProfile extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron id={id} house={house} image={houseImg}/>
+            <h1>Hello {}</h1>
           </Col>
         </Row>
         <Row>

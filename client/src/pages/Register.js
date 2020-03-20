@@ -25,6 +25,7 @@ class Register extends Component {
     email: "",
     password: "",
     house: "",
+    id: "",
     redirect: false
   };
   checkImg = (e, value) => {
@@ -80,7 +81,10 @@ class Register extends Component {
         password: this.state.password,
         houseName: this.state.house
       })
-        .then(() => this.setState({ redirect: true }))
+        .then((user) => {
+          console.log(user)
+          this.setState({ redirect: true,  id: user.data._id})
+        })
         .catch(err => console.log(err));
     }
   };
@@ -89,7 +93,7 @@ class Register extends Component {
     const { redirect } = this.state;
 
     if (redirect) {
-      return <Redirect to="/" />;
+      return <Redirect to={{ pathname: "/", state: {id: this.state.id, house: this.state.house} }} />;
     }
 
     return (

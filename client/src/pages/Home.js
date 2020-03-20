@@ -99,41 +99,7 @@ class Home extends Component {
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Jumbotron house={house} image={houseImg}>
-              {/* <h1>Hello {this.state.username}</h1> */}
-              <h1> {house} </h1>
-              <br></br>
-              <Row>
-                <Col size="md-3">
-                  <Link to="/lessons">
-                    <ListItem>
-                      <h1>Lessons</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-                <Col size="md-3">
-                  <Link to="/quiz">
-                    <ListItem>
-                      <h1>Quiz Page</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-                <Col size="md-3">
-                  <Link to="/standings">
-                    <ListItem>
-                      <h1>Scores</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-                <Col size="md-3">
-                  <Link to="/">
-                    <ListItem>
-                      <h1>User Profile</h1>
-                    </ListItem>
-                  </Link>
-                </Col>
-              </Row>
-            </Jumbotron>
+            <Jumbotron house={house} image={houseImg}/>
           </Col>
         </Row>
         <Row>
