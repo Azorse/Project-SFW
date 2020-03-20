@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import quizAPI from "../utils/quizAPI"
-import { Line, Bar } from "react-chartjs-2";
-import axios from "axios";
+import { Bar } from "react-chartjs-2";
 import API from "../utils/API";
 import questions from "../question.json"
 import Gryffindor from "../components/Images/gryffindorSmall.png";
@@ -11,9 +9,6 @@ import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
 import Hogwarts from "../components/Images/hogwartsSmall.png";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import DeleteBtn from "../components/Button";
 import { Jumbotron } from "../components/Jumbotron";
 import Nav from "../components/Nav"
 
@@ -252,7 +247,7 @@ class Chart extends Component {
                   <Jumbotron house={house} image={this.state.houseImg} id={id}>
                     <h1>Harry Potter Quiz</h1>
                   </Jumbotron>
-                  <h1>Hello {id}{house}</h1>
+                  <h1>Hello {this.state.firstName}</h1>
                 </Col>
               </Row>
               <Row>

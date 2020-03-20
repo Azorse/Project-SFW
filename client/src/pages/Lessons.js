@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/Button";
 import { Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
 import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
 import Nav from "../components/Nav";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
@@ -167,7 +164,7 @@ class LogIn extends Component {
             <Jumbotron house={house} image={this.state.houseImg} id={id}>
               <h1>Harry Potter Lesson</h1>
             </Jumbotron>
-            <h1>Hello {id}{house}</h1>
+            <h1>Hello {this.state.firstName}</h1>
           </Col>
         </Row>
         <Row>

@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/Button";
 import { Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import Nav from "../components/Nav"
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
@@ -122,7 +118,7 @@ class UserProfile extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron id={id} house={house} image={houseImg}/>
-            <h1>Hello {}</h1>
+            <h1>Hello {this.state.firstName}</h1>
           </Col>
         </Row>
         <Row>

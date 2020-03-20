@@ -1,16 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import DeleteBtn from "../components/Button";
 import { Jumbotron } from "../components/Jumbotron";
-import ReactDOM from "react-dom";
-import axios from "axios";
 import quizAPI from "../utils/quizAPI"
 import API from "../utils/API"
 import Nav from "../components/Nav"
-import Question from "../components/QuizForm"
 import questions from "../question.json"
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
@@ -118,7 +112,7 @@ class Quiz extends Component {
 
   handleOptionChange = (changeEvent) => {
     const val = changeEvent.target
-    const ho = this.state.house
+    // const ho = this.state.house
     const value = parseInt(val.value)
       // const prevState = {};
       this.setState( prevState => (
@@ -147,7 +141,7 @@ class Quiz extends Component {
         // console.log(this.state.selectedOption[el])
         // console.log(el)
         console.log(this.state.selectedOption[i])
-        if(this.state.selectedOption[i] == this.state.questions[i].correctAnswer){
+        if(this.state.selectedOption[i] === this.state.questions[i].correctAnswer){
           console.log("Correct")
           n[i] = 1
         }
@@ -199,7 +193,7 @@ class Quiz extends Component {
             <Jumbotron house={house} image={this.state.houseImg} id={id}>
               <h1>Harry Potter Quiz</h1>
             </Jumbotron>
-            <h1>Hello {id}{house}</h1>
+            <h1>Hello {this.state.firstName}</h1>
             <br></br>
             <br></br>
           </Col>

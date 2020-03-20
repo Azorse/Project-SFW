@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
 import { Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
