@@ -114,7 +114,9 @@ class Register extends Component {
                 <Alert className="animated fadeIn" color="danger">
                   {this.state.message}
                 </Alert>
-              ) : (<></>)}
+              ) : (
+                <></>
+              )}
               <Input
                 value={this.state.firstName}
                 onChange={this.handleInputChange}
@@ -159,9 +161,9 @@ class Register extends Component {
           </Col>
           <Col size="md-4"></Col>
         </Row>
-        <Row>
+        <Row className="d-flex justify-content-between">
           {this.state.images.map(image => (
-            <ListItem>
+            <ListItem className="d-flex justify-content-between">
               <img
                 alt="house crest"
                 src={image.name}

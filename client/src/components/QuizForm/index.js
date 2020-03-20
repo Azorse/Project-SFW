@@ -1,7 +1,7 @@
 import React from "react";
-import { Jumbotron as Jtron, Button, Row } from "reactstrap";
-import { render } from "react-dom";
-import questions from "../../question.json";
+import questions from "../../question.json"
+
+
 
 class Question extends React.Component {
   state = {
