@@ -11,14 +11,28 @@ module.exports = {
   findGryff: function(req, res) {
     dbq.Quiz
       .find(req.query)
-      .where('houseName').equals("Gryffindor")
+      .where('houseName').equals("gryffindor")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findSlyth: function(req, res) {
     dbq.Quiz
       .find(req.query)
-      .where('houseName').equals("Slytherin")
+      .where('houseName').equals("slytherin")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findRaven: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .where('houseName').equals("ravenclaw")
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findHuff: function(req, res) {
+    dbq.Quiz
+      .find(req.query)
+      .where('houseName').equals("hufflepuff")
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -37,8 +51,9 @@ module.exports = {
  
   },  
   create: function(req, res) {
-    const {questionOne, questionTwo, questionThree, houseName} = req.body
-    let newScore = {questionOne, questionTwo, questionThree, houseName}
+    const {questions, houseName} = req.body
+    let newScore = 
+          {questions, houseName}
     console.log(newScore)
     dbq.Quiz
       .create(newScore)

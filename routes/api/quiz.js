@@ -13,6 +13,12 @@ router.route("/gryff")
 router.route("/slyth")
   .get(quizController.findSlyth);
 
+router.route("/raven")
+  .get(quizController.findRaven);
+
+router.route("/huff")
+  .get(quizController.findHuff);
+
 // Matches with "/api/users/:id"
 router
   .route("/:id")

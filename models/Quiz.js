@@ -4,82 +4,84 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const quizSchema = new Schema({
-    question: {
-        answer: {
+    // question: {
+    //     answer: {
+    //         type: Number,
+    //         required: true
+    //     },
+    //     scores: {
+    //         gryffindor: {
+    //             type: Number
+    //         },
+    //         slytherin: {
+    //             type: Number
+    //         },  
+    //         ravenclaw: {
+    //             type: Number
+    //         },           
+    //         hufflepuff: {
+    //             type: Number
+    //         }
+    //     }
+    // },
+    questions: [{
+        questionOne: {
             type: Number,
-            required: true
+            required: true,
+            // ref: 'user'
         },
-        scores: {
-            gryffindor: {
-                type: Number
-            },
-            slytherin: {
-                type: Number
-            },  
-            ravenclaw: {
-                type: Number
-            },           
-            hufflepuff: {
-                type: Number
-            }
-        }
+        questionTwo: {
+            type: Number,
+            required: true,
+            // ref: 'user'
+        },
+        questionThree: {
+            type: Number,
+            required: true,
+            // ref: 'user'
+        },    
+        questionFour: {
+            type: Number,
+            required: true,
+            //ref: 'user'
+        },
+        questionFive: {
+            type: Number,
+            required: true,
+           // ref: 'user'
+        },
+        questionSix: {
+            type: Number,
+            required: true,
+           // ref: 'user'
+        },
+        questionSeven: {
+            type: Number,
+            required: true,
+           // ref: 'user'
+        },
+        questionEight: {
+            type: Number,
+            required: true,
+           // ref: 'user'
+        },
+        questionNine: {
+            type: Number,
+            required: true,
+           // ref: 'user'
+        },
+        question10: {
+            type: Number,
+            required: true,
+           // ref: 'user'
+        },
+    }],
+    
+    houseName: {
+        type: String,
+        required: true,
+        // ref: 'user'
     }
-    // questionOne: {
-    //     type: Number,
-    //     required: true,
-    //     // ref: 'user'
-    // },
-    // questionTwo: {
-    //     type: Number,
-    //     required: true,
-    //     // ref: 'user'
-    // },
-    // questionThree: {
-    //     type: Number,
-    //     required: true,
-    //     // ref: 'user'
-    // },    
-    // houseName: {
-    //     type: String,
-    //     required: true,
-    //     // ref: 'user'
-    // }
-    // ,
-    // questionFour: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
-    // questionFive: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
-    // questionSix: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
-    // questionSeven: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
-    // questionEight: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
-    // questionNine: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
-    // question10: {
-    //     type: Number,
-    //     required: true,
-    //     ref: 'user'
-    // },
     // answeredCorrectly: {
     //     type: Number,
     //     required: true,
