@@ -88,6 +88,7 @@ class LogIn extends Component {
         if (user.data._id) {
           this.setState({
             loggedIn: true,
+            house: user.data.houseName,
             user: user.data._id
           });
           console.log("log in successful");
@@ -108,7 +109,27 @@ class LogIn extends Component {
     return (
       <Container>
         <Row>
-          <Col size="md-4"></Col>
+          <Col size="md-4">
+            <img src={Gryffindor} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>          
+          </Col>
           <Col size="md-4">
             <Jumbotron>
               {" "}
@@ -148,12 +169,53 @@ class LogIn extends Component {
               <Link to="/register">Haven't receievd your owl?</Link>
             </form>
           </Col>
-          <Col size="md-4"></Col>
+          <Col size="md-4">
+            <img src={Slytherin} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>
+          </Col>
         </Row>
-        {/* <Row className="d-flex justify-content-center">
-          <Col size="md-4"></Col>
+        <Row className="d-flex justify-content-center">
+          <Col size="md-4">
+            <img src={Ravenclaw} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>
+          </Col>
             <Col size="md-4" className="d-flex justify-content-between ">
-              <Link 
+
+              {/* <Link 
                 to="/api/users/google"
                 >
                 <Button outline color="warning" className="btn btn-secondary">Google</Button>
@@ -167,24 +229,32 @@ class LogIn extends Component {
                 to="/api/users/twitter"
                 >
                 <Button outline color="warning" className="btn btn-secondary">Twitter</Button>
-              </Link>
+              </Link> */}
             </Col>
-          <Col size="md-4"></Col>
-        </Row> */}
+          <Col size="md-4">
+            <img src={Hufflepuff} alt="house crest" width="200" height="250" className="center"></img>
+                      <style>
+            {"\
+            .center{\
+              display: block;\
+              margin-left: auto;\
+              margin-right: auto;\
+              color: white;\
+            }\
+            "}
+            {"\
+            .textCenter{\
+              display: block;\
+              margin-left: 10px;\
+              margin-right: 10px;\
+              color: white;\
+            }\
+            "}
+          </style>
+          </Col>
+        </Row>
         <Row>
-          {this.state.images.map(image => (
-            <ListItem>
-              <img
-                alt="house crest"
-                src={image.name}
-                id={image.value}
-                width="200"
-                height="250"
-                value={image.value}
-                onClick={e => this.checkImg(e, image.name)}
-              ></img>
-            </ListItem>
-          ))}
+
         </Row>
       </Container>
     );

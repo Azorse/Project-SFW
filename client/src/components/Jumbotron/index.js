@@ -45,14 +45,9 @@ export function Jumbotron(props) {
             Quiz Page
           </Button>{" "}
         </Link>
-        <Link
-          className="navButton"
-          to={{
-            pathname: "/scores",
-            state: { id: props.id, house: props.house }
-          }}
-        >
-          <Button className="navButton" outline color="warning">
+
+        <Link to={{ pathname: "/standings", state: {id: props.id, house: props.house} }}>
+          <Button outline color="warning">
             Scores
           </Button>{" "}
         </Link>
