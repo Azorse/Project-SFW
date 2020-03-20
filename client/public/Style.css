@@ -30,8 +30,17 @@ body {
     color: white;
     padding: 20px;
     font-family: "secondFont";
-    font-size: large;
+    font-size: x-large;
     font-weight: bolder;
+  }
+  .btn {
+    width: 100%;
+    padding: 15px;
+    font-family: "secondFont";
+    font-size: x-large;
+  }
+  .form-control {
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
@@ -43,4 +52,13 @@ body {
     font-size: large;
     font-weight: bolder;
   }
+  .btn {
+    width: 100%;
+    padding: 10px;
+  }
+  /* .list-group-item {
+    width: 25px;
+    height: 25px;
+    padding: 25px;
+  } */
 }

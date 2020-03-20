@@ -6,9 +6,16 @@ export function Jumbotron(props) {
   return (
     <Jtron>
       <Row className="justify-content-between">
-        <img src={props.image} width="200" height="250" alt="House Crest" />{" "}
+        <img
+          className="image"
+          src={props.image}
+          width="200"
+          height="250"
+          alt="House Crest"
+        />{" "}
         <h1>{props.house}</h1>
         <img
+          className="image"
           src={props.image}
           width="200"
           height="250"
