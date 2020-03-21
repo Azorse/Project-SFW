@@ -1,14 +1,35 @@
 import React, { Component } from "react";
+import DeleteBtn from "../components/Button";
 import { Jumbotron3 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
+import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
+import { Input, TextArea, FormBtn } from "../components/Form";
+import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
+//// Images
+// Gryffindor
+import Harry from "../components/Images/Harry_Potter_Real.png"
+import Ron from "../components/Images/Ron_Weasley_Real.png"
+import Hermoine from "../components/Images/Hermione_Real.png"
+import Albus from "../components/Images/Albus_Dumbledor_Real.jpg"
+// Hufflepuff
+import Huff1 from "../components/Images/Hufflepuff_1.jpg"
+import Huff2 from "../components/Images/Hufflepuff_2.jpg"
+import Huff3 from "../components/Images/Hufflepuff_3.png"
+import Huff4 from "../components/Images/Hufflepuff_REAL.png"
+//Ravenclaw
+import Raven1 from "../components/Images/Flitwick_Real.png"
+import Raven2 from "../components/Images/ravenclawman.png"
+import Raven3 from "../components/Images/ravenclawgirl.png"
+import Raven4 from "../components/Images/trueRavenClaw.png"
+//Slytherin
 import Snape from "../components/Images/Severus_Snape.jpg";
+
 
 class Home extends Component {
   state = {
@@ -23,10 +44,10 @@ class Home extends Component {
           Their daring, nerve, and chivalry
           Set Gryffindors apart`,
         people: [
-          {name: "Severus Snape", face: Snape, desc: "This is Severus Snape", num: 0},
-          {name: "Severus Snape", face: Snape, desc: "This is also Snape", num: 1},
-          {name: "Severus Snape", face: Snape, desc: "Snape is here aswell", num: 2},
-          {name: "Severus Snape", face: Snape, desc: "Snaep", num: 3}
+          {name: "Harry Potter", face: Harry, desc: "Hello this is Harry Potter", num: 0},
+          {name: "Ron Weasley", face: Ron, desc: "I am not Harry Potter. I am Ron", num: 1},
+          {name: "Hermoine Granger", face: Hermoine, desc: "I'm the only redhead in this house", num: 2},
+          {name: "Ablus Dumbledore", face: Albus, desc: "Old Man", num: 3}
         ]
       },
       {
@@ -39,10 +60,10 @@ class Home extends Component {
           Those patient Hufflepuffs are true
           And unafraid of toil`,
         people: [
-          {name: "Severus Snape", face: Snape, desc: "This is Severus Snape", num: 0},
-          {name: "Severus Snape", face: Snape, desc: "This is also Snape", num: 1},
-          {name: "Severus Snape", face: Snape, desc: "Snape is here aswell", num: 2},
-          {name: "Severus Snape", face: Snape, desc: "Snaep", num: 3}
+          {name: "Cedric Diggory", face: Huff1, desc: "Level 1 Hufflepuff", num: 0},
+          {name: "Dedric Ciggory", face: Huff2, desc: "Level 2 Hufflepuff", num: 1},
+          {name: "Sir Dedric Ciggory", face: Huff3, desc: "Level 3 Hufflepuff", num: 2},
+          {name: "Severus Diggory", face: Huff4, desc: "Peak Hufflepuff", num: 3}
         ]
       },
       {
@@ -55,10 +76,10 @@ class Home extends Component {
           Where those of wit and learning,
           Will always find their kind`,
         people: [
-          {name: "Severus Snape", face: Snape, desc: "This is Severus Snape", num: 0},
-          {name: "Severus Snape", face: Snape, desc: "This is also Snape", num: 1},
-          {name: "Severus Snape", face: Snape, desc: "Snape is here aswell", num: 2},
-          {name: "Severus Snape", face: Snape, desc: "Snaep", num: 3}
+          {name: "Professor Filius Flitwick", face: Raven1, desc: "Hi", num: 0},
+          {name: "Garrick Olivander", face: Raven2, desc: "Reverse world Snape", num: 1},
+          {name: "Luna Lovegood", face: Raven3, desc: "insert description here", num: 2},
+          {name: "Gilderoy Lockhart", face: Raven4, desc: "A true Ravenclaw", num: 3}
         ]
       },
       {

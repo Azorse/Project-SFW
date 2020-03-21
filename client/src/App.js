@@ -6,11 +6,10 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import HouseInfo from "./pages/HouseInfo"
 import NoMatch from "./pages/NoMatch";
-import UserProfile from "./pages/UserProfile"
-
 import Standings from "./pages/Standings";
 import Lessons from "./pages/Lessons";
 import Quiz from "./pages/Quiz";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (

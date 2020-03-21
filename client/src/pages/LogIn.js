@@ -90,7 +90,8 @@ class LogIn extends Component {
           this.setState({
             loggedIn: true,
             house: user.data.houseName,
-            user: user.data._id
+            user: user.data._id,
+            redirect: true
           });
           console.log("log in successful");
           window.location.href = '/home';
