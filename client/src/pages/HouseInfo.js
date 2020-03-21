@@ -12,6 +12,11 @@ import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";
 import Slytherin from "../components/Images/slytherinSmall.png";
 import Snape from "../components/Images/Severus_Snape.jpg";
+import Harry from "../components/Images/Harry_Potter_Real.png"
+import Ron from "../components/Images/Ron_Weasley_Real.png"
+import Hermoine from "../components/Images/Hermoine_Real.png"
+import Albus from "../components/Images/Albus_Dumbledor_Real.png"
+
 
 class Home extends Component {
   state = {
@@ -26,10 +31,10 @@ class Home extends Component {
           Their daring, nerve, and chivalry
           Set Gryffindors apart`,
         people: [
-          {name: "Severus Snape", face: Snape, desc: "This is Severus Snape", num: 0},
-          {name: "Severus Snape", face: Snape, desc: "This is also Snape", num: 1},
-          {name: "Severus Snape", face: Snape, desc: "Snape is here aswell", num: 2},
-          {name: "Severus Snape", face: Snape, desc: "Snaep", num: 3}
+          {name: "Harry Potter", face: Harry, desc: "Hello this is Harry Potter", num: 0},
+          {name: "Ron Weasley", face: Ron, desc: "I am not Harry Potter. I am Ron", num: 1},
+          {name: "Hermoine Granger", face: Hermoine, desc: "I'm the only redhead in this house", num: 2},
+          {name: "Ablus Dumbledore", face: Albus, desc: "Old Man", num: 3}
         ]
       },
       {
