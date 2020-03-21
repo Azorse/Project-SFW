@@ -13,7 +13,7 @@ This web app is a plafrom in wheere you can create lessons and quizzes for users
 
 You can explore the most recent version of our app [here](https://project-sfw.herokuapp.com/).
 
-Our final presentation can be viewed [here](https://docs.google.com/presentation/d/1ZLv4aX2vKlCcyuCIL8EJxNZCXzIGRTbBrY5kBEFozT4/edit?usp=sharing)
+Our final presentation can be viewed [here](https://docs.google.com/presentation/d/1ZLv4aX2vKlCcyuCIL8EJxNZCXzIGRTbBrY5kBEFozT4/edit?usp=sharing).
 
 
 
