@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
-import { Jumbotron as Jumbotron2 } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Alert } from "reactstrap";
