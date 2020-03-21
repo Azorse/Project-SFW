@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/Button";
 import { Jumbotron3 as Jumbotron } from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import { UncontrolledCollapse, Button, CardBody, Card } from "reactstrap";
+import { UncontrolledCollapse, CardBody, Card } from "reactstrap";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
 import Ravenclaw from "../components/Images/ravenclawSmall.png";

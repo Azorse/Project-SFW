@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom"
+import { Link, Redirect } from "react-router-dom"
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
-import DeleteBtn from "../components/Button";
 import { Jumbotron } from "../components/Jumbotron";
-import ReactDOM from "react-dom";
-import axios from "axios";
 import quizAPI from "../utils/quizAPI"
 import API from "../utils/API"
 import Nav from "../components/Nav"
-import Question from "../components/QuizForm"
 import questions from "../question.json"
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
@@ -22,37 +16,38 @@ import Hogwarts from "../components/Images/hogwartsSmall.png";
 class Quiz extends Component {
 
     state = {
+      redirect: false,
       questions,
       questionsArr: [],
       selectedOption: {},
       images: [
         {
           name: Gryffindor,
-          value: "gryffindor",
+          value: "Gryffindor",
           data:
             "The Gryffindor house emphasises the traits of courage as well as daring, nerve, and chivalry, and thus its members are generally regarded as brave, though sometimes to the point of recklessness. Some Gryffindors have also been noted to be short-tempered."
         },
         {
           name: Hufflepuff,
-          value: "hufflepuff",
+          value: "Hufflepuff",
           data:
             "Students belonging to this house are known to be hard-working, friendly, loyal, honest and rather impartial. It may be that due to their values, Hufflepuffs are not as competitive as the other houses, and are more modest about their accomplishments. Hufflepuff is the most inclusive among the four houses; valuing hard work, dedication, patience, loyalty, and fair play rather than a particular aptitude in its students."
         },
         {
           name: Ravenclaw,
-          value: "ravenclaw",
+          value: "Ravenclaw",
           data:
             "Ravenclaw House prizes learning, wisdom, wit, and intellect in its members. Thus, many Ravenclaws tend to be academically motivated and talented students. They also pride themselves on being original in their ideas, and methods. It's not unusual to find Ravenclaw students practising especially different types of magic that other houses might shun."
         },
         {
           name: Slytherin,
-          value: "slytherin",
+          value: "Slytherin",
           data:
             "Slytherins tend to be ambitious, shrewd, cunning, strong leaders, and achievement-oriented. They also have highly developed senses of self-preservation. This means that Slytherins tend to hesitate before acting, so as to weigh all possible outcomes before deciding exactly what should be done."
         },
         {
           name: Hogwarts,
-          value: "hogwarts",
+          value: "Hogwarts",
           data:
             "You have yet to be sorted"
         }
@@ -118,7 +113,6 @@ class Quiz extends Component {
 
   handleOptionChange = (changeEvent) => {
     const val = changeEvent.target
-    const ho = this.state.house
     const value = parseInt(val.value)
       // const prevState = {};
       this.setState( prevState => (
@@ -147,7 +141,7 @@ class Quiz extends Component {
         // console.log(this.state.selectedOption[el])
         // console.log(el)
         console.log(this.state.selectedOption[i])
-        if(this.state.selectedOption[i] == this.state.questions[i].correctAnswer){
+        if(this.state.selectedOption[i] === this.state.questions[i].correctAnswer){
           console.log("Correct")
           n[i] = 1
         }
@@ -173,7 +167,7 @@ class Quiz extends Component {
       }],
       houseName: this.state.house
     })
-    .then(res => {console.log(res)})
+    .then(res => {this.setState({redirect: true})})
     .catch(err => console.log(err))
       
     // for (var i = 0; i < this.state.selectedOption.length; i++){
@@ -190,16 +184,22 @@ class Quiz extends Component {
   }
 
   render() {
-    const {id, house} = this.props.location.state
+    const {id, house} = this.state
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to='/standings' />;
+    }
+
     return (
       <Container fluid>
-      <Nav />
+      <Nav firstName={this.state.firstName}/>
         <Row>
           <Col size="md-12">
             <Jumbotron house={house} image={this.state.houseImg} id={id}>
               <h1>Harry Potter Quiz</h1>
             </Jumbotron>
-            <h1>Hello {id}{house}</h1>
+            <h1>Hello {this.state.firstName}</h1>
             <br></br>
             <br></br>
           </Col>
@@ -222,10 +222,8 @@ class Quiz extends Component {
           <br></br>
         </div>
       ))}
-      <Link to="/standings">
-       <button href="/standings" className="btn btn-default" 
+       <button className="btn btn-default" 
        type="submit">Save</button>
-       </Link>
        {/* <h1>{house}</h1> */}
       </form>
       </div>

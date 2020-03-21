@@ -47,9 +47,11 @@ app.get('*', (req, res) => {
 });
 
 //db
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sfw")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sfw", {useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=> console.log(`Mongo Connected...`))
     .catch(err => console.log(err));
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Server started on port ${port}`));

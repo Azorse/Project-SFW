@@ -1,12 +1,12 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
 import { Jumbotron2 as Jumbotron } from "../components/Jumbotron";
 import { Jumbotron as Jumbotron2 } from "../components/Jumbotron";
 import API from "../utils/API";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import { Alert, Button } from "reactstrap";
+import { Alert } from "reactstrap";
 import { Col, Row, Container } from "../components/Grid";
-import { ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import Gryffindor from "../components/Images/gryffindorSmall.png";
 import Hufflepuff from "../components/Images/hufflepuffSmall.png";
@@ -30,8 +30,13 @@ class LogIn extends Component {
     loggedIn: false,
     user: null,
     message: "",
+<<<<<<< HEAD
     redirect: false,
     error: ""
+=======
+    error: "",
+    redirect: false
+>>>>>>> 8370b4bbe23f94ce9d2eb9e34e26e92458ade17f
   };
 
   componentDidMount() {
@@ -96,7 +101,12 @@ class LogIn extends Component {
             redirect: true
           });
           console.log("log in successful");
+<<<<<<< HEAD
           // window.location.href = '/home';
+=======
+          window.location.href = '/home';
+          // <Redirect to="/home" />
+>>>>>>> 8370b4bbe23f94ce9d2eb9e34e26e92458ade17f
         }
         else if (user.data.message) {
           this.setState({
@@ -109,7 +119,9 @@ class LogIn extends Component {
   }
 
   render() {
+    const { redirect } = this.state;
 
+<<<<<<< HEAD
     const { redirect } = this.state;
 
     if (redirect) {
@@ -118,7 +130,14 @@ class LogIn extends Component {
       )
     }
 
+=======
+    if (redirect) {
+      return <Redirect to="/" />;
+    } 
+>>>>>>> 8370b4bbe23f94ce9d2eb9e34e26e92458ade17f
     return (
+
+
       <Container>
         <Row>
           <Col size="md-4">
