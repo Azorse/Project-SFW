@@ -15,8 +15,8 @@ import Slytherin from "../components/Images/slytherinSmall.png";
 // Gryffindor
 import Harry from "../components/Images/Harry_Potter_Real.png"
 import Ron from "../components/Images/Ron_Weasley_Real.png"
-import Hermoine from "../components/Images/Hermoine_Real.png"
-import Albus from "../components/Images/Albus_Dumbledor_Real.png"
+import Hermoine from "../components/Images/Hermione_Real.png"
+import Albus from "../components/Images/Albus_Dumbledor_Real.jpg"
 // Hufflepuff
 import Huff1 from "../components/Images/Hufflepuff_1.jpg"
 import Huff2 from "../components/Images/Hufflepuff_2.jpg"
@@ -79,7 +79,7 @@ class Home extends Component {
           {name: "Professor Filius Flitwick", face: Raven1, desc: "Hi", num: 0},
           {name: "Garrick Olivander", face: Raven2, desc: "Reverse world Snape", num: 1},
           {name: "Luna Lovegood", face: Raven3, desc: "insert description here", num: 2},
-          {name: "Gilderoy Lockhart", face: Snape, desc: "A true Ravenclaw", num: 3}
+          {name: "Gilderoy Lockhart", face: Raven4, desc: "A true Ravenclaw", num: 3}
         ]
       },
       {
