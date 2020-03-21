@@ -30,13 +30,8 @@ class LogIn extends Component {
     loggedIn: false,
     user: null,
     message: "",
-<<<<<<< HEAD
-    redirect: false,
-    error: ""
-=======
     error: "",
     redirect: false
->>>>>>> 8370b4bbe23f94ce9d2eb9e34e26e92458ade17f
   };
 
   componentDidMount() {
@@ -101,12 +96,8 @@ class LogIn extends Component {
             redirect: true
           });
           console.log("log in successful");
-<<<<<<< HEAD
-          // window.location.href = '/home';
-=======
           window.location.href = '/home';
           // <Redirect to="/home" />
->>>>>>> 8370b4bbe23f94ce9d2eb9e34e26e92458ade17f
         }
         else if (user.data.message) {
           this.setState({
@@ -121,20 +112,9 @@ class LogIn extends Component {
   render() {
     const { redirect } = this.state;
 
-<<<<<<< HEAD
-    const { redirect } = this.state;
-
-    if (redirect) {
-      return (
-        <Redirect to={{ pathname: "/home", state: {id: this.state.user, house: this.state.house} }} />
-      )
-    }
-
-=======
     if (redirect) {
       return <Redirect to="/" />;
     } 
->>>>>>> 8370b4bbe23f94ce9d2eb9e34e26e92458ade17f
     return (
 
 
