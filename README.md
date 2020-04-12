@@ -1,6 +1,18 @@
-# Safe For Work
+
+# Project-SFW
 ## A gamified learning and testing web app
 ### By Andrew Hardemon, Joji Koons, Daniel Schissler, and Elizabeth Hindash
+
+This web app is a plafrom in wheere you can create lessons and quizzes for users to take. Their results are recorded and displayed visually.
+
+## Technologies Used:
+- Node
+- Express
+- Mongo
+- Axios
+- React
+- Chartjs
+- Passport
 
 ## Instructions
 1. First you're taken to the login in page where you can either log in or click `Haven't recieved your owl` to register
@@ -15,3 +27,8 @@
 5. The `Standings page` shows the results from the MongoDB database for every quiz sorted into bar graphs for each house. There you can compare each of the houses and how they perform.
 
 6. Lastly you can go to the `House Info` page and see a more detailed description of your house and famous wizards in that house.
+
+## Product
+You can explore the most recent version of our app [here](https://project-sfw.herokuapp.com/).
+
+Our final presentation can be viewed [here](https://docs.google.com/presentation/d/1ZLv4aX2vKlCcyuCIL8EJxNZCXzIGRTbBrY5kBEFozT4/edit?usp=sharing).
